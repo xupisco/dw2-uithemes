@@ -31,6 +31,11 @@
     // Beyond the game's schemes.
     "BorderColor": "#7A5FD0",
     "PopupListBorderColor": "#4A2A80",
-    "HoverInfoBorderColor": "#4A2A80"
+    "HoverInfoBorderColor": "#4A2A80",
+    // Dividers between the top-left section tabs, the top-right game buttons and the bottom-right map buttons
+    // (game: a copy of the button text color, cyan here). The sub-tab outline keeps the pink accent.
+    "EmpireSectionList.ForeColor": "#7A5FD0",
+    "AngledButtonStrip.ForeColor": "#7A5FD0",
+    "MapOverlayButtons.DarkColor": "#7A5FD0"
   }
 }

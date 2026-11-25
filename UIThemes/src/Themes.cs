@@ -129,6 +129,7 @@ internal static class Themes
             Fields[name].SetValue(null, color);
         }
         Overrides.Use(current);
+        Outlines.Use(current);
         LiveRefresh.Record(); // the game's own colors
         if (current != null)
         {
@@ -350,7 +351,7 @@ internal static class Themes
             foreach (var prop in colors.EnumerateObject())
             {
                 string hex = prop.Value.ValueKind == JsonValueKind.String ? prop.Value.GetString() : null;
-                if (!Fields.ContainsKey(prop.Name) && !Overrides.IsKnown(prop.Name))
+                if (!Fields.ContainsKey(prop.Name) && !Overrides.IsKnown(prop.Name) && !Outlines.IsKnown(prop.Name))
                 {
                     WarnOnce($"{theme.File}: unknown color \"{prop.Name}\" ignored.");
                 }

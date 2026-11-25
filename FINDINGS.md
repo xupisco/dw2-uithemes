@@ -159,6 +159,11 @@ Há quatro fontes, e cada uma se comporta de um jeito ao trocar o tema com o jog
 | Janela do objeto selecionado: tooltips | `SelectionPanel.HotspotBackColor` (`#404040E8`) | própria | confirmado |
 | Janela do objeto selecionado: texto / sombra do texto | `SelectionPanel.ForeColor` / `ShadowColor` (DWControl) | cópia | confirmado (Probe F) |
 | Janela do objeto selecionado: degradê lateral | **nenhuma cor**: textura ou cor fixa | — | confirmado que não é cor (6 sondas) |
+| Divisórias das abas de seção (topo esquerdo) | `EmpireSectionList.ForeColor`: texturas 16×90 e 2×90 desenhadas pelo contêiner | cópia de `ButtonColorText` (`#CFCFCF` no Basalt) | confirmado (levantamento + tema de teste, 2026-11-25) |
+| Divisórias dos botões do jogo (topo direito: Galactopedia, Menu, Vitória, Tela limpa) | `AngledButtonStrip.ForeColor`, mesmas texturas | cópia de `ButtonColorText` | confirmado |
+| Divisórias dos botões do mapa (baixo direito) | `MapOverlayButtons.DarkColor`, mesmas texturas | cópia fixa `#606060` | confirmado (levantamento) |
+| Contorno das sub-abas de uma seção (Exploration, Military…) | `AccentColor` lido na hora, linhas e preenchimentos de 1×1 desenhados pela `SectionHeaderPanel`; a borda das próprias abas é `#161616E5` (cópia de `HoverInfoBorderColor`) | ColorHelper | confirmado (`ButtonColorToggleHover` deslocado não mudou o contorno). O mod troca com `SectionHeaderPanel.OutlineColor` |
+| Moldura do cabeçalho de seção | `#C0C0C060` fixo | — | medido |
 | Painel do sistema embaixo ao centro | desconhecido | — | não segue os testes |
 | Moldura de seleção, ícone "A", barra de 63% no mapa | não são cores da UI | — | não segue os testes |
 
@@ -176,6 +181,21 @@ Temas em `UIThemes\probes\`, que não vão no pacote. Cada uma pinta campos susp
 | D | fundos de painéis específicos (`SelectionPanelTextLegibilityBackColor`, `RaceSummaryBackColor`…) | nada na janela do objeto selecionado |
 | E | `SelectionPanel.SectionBackColor/HotspotBackColor/HighlightColor/GraphBackColor` | faixas alternadas e tooltips da janela |
 | F | `SelectionPanel.BackColor/ShadowColor/DarkColor/BorderColor/ForeColor` | texto e sombra do texto |
+
+## Levantamento de bordas (`borders.flag`)
+
+- **O que mostrou (2026-11-25):**
+  - Os botões de cima são `DWButton` comuns, mas a moldura clara não é borda deles: são as divisórias que o contêiner desenha com uma cor copiada na criação (ver o mapa).
+  - As cores de teste (`toggle.flag`) **não servem** para achar cores copiadas: elas mudam só o `ColorHelper`, e as cópias ficam como estavam. Um tema de teste com um campo deslocado em um passo (`#5076B4` → `#5177B5`) é que separa dois campos de mesmo valor.
+  - `UserInterfaceController.StrideControls` está vazio: a interface do jogo não usa elementos de UI do Stride.
+  - Os `ToggleButtonGroup` guardam cópias próprias (`ButtonColorToggled`, `ButtonColorHoveredToggled`, `ButtonBorderColor`…), feitas na criação.
+- **Detalhes técnicos:** no Stride 4.2 do jogo, todo `SpriteBatch.Draw` termina no interno `DrawSprite`, com a cor em `Color4`. Os controles desenham por `DWControl.OnRender`, e alguns botões por `DWButton.Render` direto.
+- **Fade dos painéis:** os painéis aplicam a própria opacidade às cores (o contorno saiu `#5076B4F2`, não `FF`). Por isso o mod compara só o RGB.
+
+## Compatibilidade com outros mods
+
+- **Settings Keeper** (`3824847512`): põe 9 postfixes em `ColorHelper.SetColorScheme` (o launcher classifica como `observes`, mas isso não pega escrita em campos estáticos). Carregado depois do UI Themes, ele desfazia parte do tema a cada troca pelo atalho (`ButtonColorToggle` ficou `#434343C5`); os botões de baixo à direita ganharam moldura, e um resize (Window Fit) ou o OK das opções escondia o problema ao recriá-los. Correção: o postfix do UI Themes roda com `Priority.Last`. **confirmado** (troca de temas pelo atalho sem perder cores, 2026-11-25)
+- **Music Box** (`3828075248`), **Positronic Matrix** (`3833406787`): sem conflito visto.
 
 ## Outros detalhes
 

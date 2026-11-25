@@ -232,6 +232,12 @@
 
 <script>
 /*__DATA__*/
+// The template has no color data until tools\build-editor.ps1 fills it in; say so instead of a blank preview.
+if (typeof BASE === "undefined") {
+  document.body.innerHTML = '<p style="font:16px sans-serif;color:#ddd;padding:24px">This is the editor template, without the color data. ' +
+    'Open <b>theme-editor.html</b> instead (in the mod folder, or tools\\theme-editor.html after running tools\\build-editor.ps1).</p>';
+  throw new Error("theme-editor.template.html opened directly; open theme-editor.html");
+}
 
 // Field groups, with where each color shows up (from the tests in game).
 const GROUPS = [
@@ -302,6 +308,10 @@ const GROUPS = [
     ["BorderColor", "Panel and button border"],
     ["FaintBorderColor", "Table lines"],
     ["OverlayTintColor", "Gradient on the sides of panels (alpha 0 = no gradient)"],
+    ["EmpireSectionList.ForeColor", "Dividers between the section tabs at the top left (game: copy of ButtonColorText)"],
+    ["AngledButtonStrip.ForeColor", "Dividers between the game buttons at the top right (game: copy of ButtonColorText)"],
+    ["MapOverlayButtons.DarkColor", "Dividers between the map buttons at the bottom right"],
+    ["SectionHeaderPanel.OutlineColor", "Outline around a section's sub-tabs, e.g. Exploration (game: AccentColor)"],
   ]],
 ];
 

@@ -1,5 +1,19 @@
 UI Themes - changelog
 
+Next version (not released yet)
+- Dividers between the top-left section tabs, the top-right game buttons and the
+  bottom-right map buttons now follow the theme (they stayed light gray).
+- The outline around a section's sub-tabs (Exploration, Military...) can have
+  its own color; Basalt, Graphite and Obsidian use a quiet gray instead of the
+  accent.
+- New theme keys: EmpireSectionList.ForeColor, AngledButtonStrip.ForeColor,
+  MapOverlayButtons.DarkColor, SectionHeaderPanel.OutlineColor. Also in the
+  theme editor.
+- Works with Settings Keeper: the theme is applied after other mods react to a
+  color scheme change, so switching themes no longer loses colors.
+- borders.flag (for theme makers): records which controls draw borders and in
+  which color.
+
 0.3.0 (2026-11-25)
 - Five themes: Amethyst, Basalt (default), Graphite, Obsidian and Synthwave.
 - Pick the theme in the DW2 Mod Launcher (UI theme option), or in options.json

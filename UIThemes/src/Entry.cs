@@ -58,9 +58,12 @@ internal static class Core
         Log.Info($"Mod folder: {ModDir}");
         Themes.Folder = Path.Combine(ModDir, "themes");
 
+        // Last, so the theme goes on top of what other mods do after a scheme change: Settings Keeper adds
+        // schemes through its own SetColorScheme postfixes, and when those ran after ours, part of the theme
+        // was lost on a theme switch (seen 2026-11-25).
         Install("Color scheme", h => h.Patch(
             AccessTools.Method(typeof(ColorHelper), nameof(ColorHelper.SetColorScheme)),
-            postfix: new HarmonyMethod(typeof(Core), nameof(SetColorSchemePostfix))));
+            postfix: new HarmonyMethod(typeof(Core), nameof(SetColorSchemePostfix)) { priority = Priority.Last }));
 
         Install("Tooltip backgrounds", h => h.Patch(
             AccessTools.Method(typeof(DistantWorlds.UI.DWControl), "DrawHoverTip"),
@@ -70,6 +73,10 @@ internal static class Core
         Install("Live refresh", LiveRefresh.Install);
 
         Install("Control overrides", Overrides.Install);
+
+        Install("Sub-tab outline", Outlines.Install);
+
+        Install("Border survey", BorderSurvey.Install);
 
         Install("Hotkeys", h => h.Patch(
             AccessTools.Method(typeof(DWGame), "Update"),

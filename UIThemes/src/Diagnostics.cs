@@ -10,7 +10,8 @@ namespace DW2UIThemes;
 /// <summary>
 /// Developer tools: dumps ColorHelper colors to JSON and toggles loud test colors.
 /// Triggered by flag files in the output folder (checked once a second):
-/// dump.flag writes the current colors, toggle.flag turns the test colors on/off.
+/// dump.flag writes the current colors, toggle.flag turns the test colors on/off,
+/// borders.flag records which controls draw borders and in what color (BorderSurvey).
 /// With the DumpColors option, every scheme change is dumped to scheme-n.json.
 /// </summary>
 internal static class Diagnostics
@@ -64,6 +65,11 @@ internal static class Diagnostics
         {
             Dump("dump.flag");
         }
+        if (TakeFlag("borders.flag"))
+        {
+            BorderSurvey.Start();
+        }
+        BorderSurvey.Check();
     }
 
     public static void Dump(string reason, int? scheme = null)

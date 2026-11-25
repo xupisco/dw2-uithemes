@@ -37,6 +37,12 @@
     "PopupListBackColor": "#1E232AFA",
     "PopupListBorderColor": "#3A424D",
     "HoverInfoBackColor": "#12161CF2",
-    "HoverInfoBorderColor": "#3A424D"
+    "HoverInfoBorderColor": "#3A424D",
+    // Dividers between the top-left section tabs, the top-right game buttons and the bottom-right map buttons,
+    // and the outline around a section's sub-tabs: the theme's border color.
+    "EmpireSectionList.ForeColor": "#8C97A6",
+    "AngledButtonStrip.ForeColor": "#8C97A6",
+    "MapOverlayButtons.DarkColor": "#8C97A6",
+    "SectionHeaderPanel.OutlineColor": "#8C97A6"
   }
 }

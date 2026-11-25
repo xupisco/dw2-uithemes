@@ -61,6 +61,15 @@ Atualizado em 2026-11-25.
 - [ ] Conferir se o launcher enxerga a release (atualização ou instalação pelo GitHub).
 - [x] Licença MIT (`LICENSE`). (2026-11-25)
 
+### Próxima versão (em andamento, 2026-11-25)
+
+- [x] Divisórias de cima e de baixo à direita e contorno das sub-abas com chaves próprias (`Overrides`, `Outlines`), nos temas e no editor.
+- [x] `borders.flag` para mapear bordas.
+- [x] Postfix do `SetColorScheme` com `Priority.Last` (conflito com o Settings Keeper).
+- [x] Conferido no jogo: divisórias, contorno e troca de temas pelo atalho com o Settings Keeper sem perder cores. (2026-11-25)
+- [ ] Editor no GitHub Pages, formulário de issue para temas e botão "Share on GitHub" no editor (proposto 2026-11-25).
+- [ ] Subir a versão (0.4.0), release e Workshop.
+
 ## Perguntas em aberto
 
 - Como o launcher encontra a classe `Entry`? (Funciona, mas não sabemos a regra.)

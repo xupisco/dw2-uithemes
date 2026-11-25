@@ -67,7 +67,9 @@ The easiest way is the editor:
 - **Accepted keys:**
   - any `Color` field of `DistantWorlds.Types.ColorHelper`, by name (listed in the dumps in `reference\`);
   - `UserInterfaceController.<field>` and `EmpireMessage.<field>` (static colors);
-  - `SelectionPanel.<color>`, where the color is `SectionBackColor`, `HotspotBackColor`, `HighlightColor`, `GraphBackColor`, `BackColor`, `ShadowColor`, `DarkColor`, `BorderColor` or `ForeColor`.
+  - `SelectionPanel.<color>`, where the color is `SectionBackColor`, `HotspotBackColor`, `HighlightColor`, `GraphBackColor`, `BackColor`, `ShadowColor`, `DarkColor`, `BorderColor` or `ForeColor`;
+  - dividers in the button strips, which the game draws with a color copied when the strip is created: `EmpireSectionList.ForeColor` (top-left section tabs), `AngledButtonStrip.ForeColor` (top-right game buttons), `MapOverlayButtons.DarkColor` (bottom-right map buttons);
+  - `SectionHeaderPanel.OutlineColor`: the outline around a section's sub-tabs (Exploration, Military...), which the game draws with `AccentColor`.
 - **Accent shades:** if `AccentColorMid`, `AccentColorDark`, `AccentColorMidDark` and `AccentColorVeryDark` are missing, the mod derives them from `AccentColor` (× 0.7, × 0.5, × 0.25, × 0.125), as the game does.
 - **Scheme fields:** set the 24 fields the game's schemes change (the editor always includes them), so the theme looks the same with any scheme. The log lists the missing ones.
 - Unknown keys and invalid colors log a warning, once per file.
@@ -78,6 +80,7 @@ What each field paints is in the [screen map in FINDINGS.md](FINDINGS.md#mapa-da
 
 - **Probes:** `UIThemes\probes\*.json` paint suspect fields with loud colors, to find out what each one paints. To use them, copy them to the game's `themes\` folder. They are not in the package.
 - **Flags:** in the log folder, creating `toggle.flag` turns loud test colors on or off, and `dump.flag` writes every current color to `current-*.json`. The mod checks once per second.
+- **Border survey:** creating `borders.flag` in the log folder records for 3 seconds which controls draw borders, lines and textures, in which color, and which `ColorHelper` fields hold that color. The summary goes to the log, and the Stride UI elements (if any) to `stride-ui.log`. The drawing patches exist only while it records. This is how the dividers and the sub-tab outline were found.
 - **Per-scheme dumps:** the hidden `DumpColors` option writes `scheme-<n>.json` on every scheme change.
 - **Reference:** `reference\scheme-<n>-<name>.json` are the game's 7 schemes, recorded in game.
 - **Workshop image:** `.\tools\build-thumbnail.ps1` renders `tools\thumbnail.html` with headless Edge and writes `UIThemes\preview.jpg` (2560×1440). The theme colors are copied into the HTML: when a theme changes, update the `THEMES` list there.
@@ -96,7 +99,9 @@ What each field paints is in the [screen map in FINDINGS.md](FINDINGS.md#mapa-da
 | `Themes.cs` | Loads themes, applies them after each `SetColorScheme`, restores extra fields, shortcuts, on-screen message, tooltip background and `opaqueTooltips` |
 | `LiveRefresh.cs` | Keeps the color history and, in the `...Resolved` properties of `DWButton` and `DWControl`, swaps old copies for the current colors (theme switch with the game running) |
 | `Overrides.cs` | Controls' own colors (`SelectionPanel.*`) via postfix on the `...Resolved` properties; logs the game's values |
+| `Outlines.cs` | `SectionHeaderPanel.OutlineColor`: swaps the accent in the sub-tab outline while that panel draws itself |
 | `Diagnostics.cs` | Dumps, test colors and flags |
+| `BorderSurvey.cs` | `borders.flag`: records what draws borders and in which color |
 | `Log.cs` | File log |
 
 Patches are installed per feature, each with its own Harmony id. If one fails, the others keep working, and the failure goes to the log.

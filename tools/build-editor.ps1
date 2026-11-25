@@ -14,6 +14,12 @@ $base['UserInterfaceController.HoverTipTextColorDefault'] = '#D4D4D4FF'
 # SelectionPanel's own colors (logged from the game).
 $base['SelectionPanel.HotspotBackColor'] = '#404040E8'
 $base['SelectionPanel.SectionBackColor'] = '#18181880'
+# Dividers in the button strips: copies the containers make when created (ButtonColorText at that time,
+# and a fixed #606060), and the sub-tab outline (AccentColor). See FINDINGS.
+$base['EmpireSectionList.ForeColor'] = $base['ButtonColorText']
+$base['AngledButtonStrip.ForeColor'] = $base['ButtonColorText']
+$base['MapOverlayButtons.DarkColor'] = '#606060FF'
+$base['SectionHeaderPanel.OutlineColor'] = $base['AccentColor']
 
 $presets = [ordered]@{}
 Get-ChildItem "$root\UIThemes\themes\*.json" | Sort-Object Name | ForEach-Object {

@@ -25,6 +25,12 @@ internal static class Overrides
         (typeof(DWControl), "DarkColor", typeof(SelectionPanel)),
         (typeof(DWControl), "BorderColor", typeof(SelectionPanel)),
         (typeof(DWControl), "ForeColor", typeof(SelectionPanel)),
+        // Dividers between buttons in the button strips: textures drawn by the container, tinted with a
+        // color it copied when it was created. Top-left section tabs and top-right game buttons: ForeColor
+        // (game: ButtonColorText, #CFCFCF). Bottom-right map overlay buttons: DarkColor (game: #606060).
+        (typeof(DWControl), "ForeColor", typeof(EmpireSectionList)),
+        (typeof(DWControl), "ForeColor", typeof(AngledButtonStrip)),
+        (typeof(DWControl), "DarkColor", typeof(MapOverlayButtons)),
     };
 
     private sealed class Entry

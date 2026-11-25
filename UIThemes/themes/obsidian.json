@@ -63,6 +63,12 @@
     "BorderColor": "#333333",
     "FaintBorderColor": "#2A2A2A80",
     "PopupListBorderColor": "#333333",
-    "HoverInfoBorderColor": "#333333"
+    "HoverInfoBorderColor": "#333333",
+    // Dividers between the top-left section tabs, the top-right game buttons and the bottom-right map buttons
+    // (game: light gray), and the outline around a section's sub-tabs (game: AccentColor).
+    "EmpireSectionList.ForeColor": "#3A3A3A",
+    "AngledButtonStrip.ForeColor": "#3A3A3A",
+    "MapOverlayButtons.DarkColor": "#3A3A3A",
+    "SectionHeaderPanel.OutlineColor": "#3A3A3A"
   }
 }
