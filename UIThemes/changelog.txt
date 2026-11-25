@@ -1,6 +1,6 @@
 UI Themes - changelog
 
-Next version (not released yet)
+0.4.0 (2026-11-25)
 - Dividers between the top-left section tabs, the top-right game buttons and the
   bottom-right map buttons now follow the theme (they stayed light gray).
 - The outline around a section's sub-tabs (Exploration, Military...) can have
