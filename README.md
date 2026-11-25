@@ -100,3 +100,7 @@ O que cada campo pinta está no [mapa da tela, em FINDINGS.md](FINDINGS.md#mapa-
 | `Log.cs` | Log em arquivo |
 
 Os patches são instalados por recurso, cada um com seu id de Harmony. Se um falhar, os outros continuam funcionando, e a falha vai para o log.
+
+## Licença
+
+MIT, ver [LICENSE](LICENSE).

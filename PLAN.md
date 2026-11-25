@@ -58,7 +58,7 @@ Atualizado em 2026-11-25.
 - [ ] Publicar na Workshop e subir as imagens de `workshop\` na galeria.
 - [x] Primeira release no GitHub: `DW2UIThemes-v0.3.0`, com zip, sha256, manifesto e preview no formato do Refreshed, gerados por `tools\build-release.ps1`. (2026-11-25)
 - [ ] Conferir se o launcher enxerga a release (atualização ou instalação pelo GitHub).
-- [ ] Licença no repositório (ainda não tem).
+- [x] Licença MIT (`LICENSE`). (2026-11-25)
 
 ## Perguntas em aberto
 
