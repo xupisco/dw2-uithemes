@@ -54,7 +54,10 @@ Atualizado em 2026-11-25.
 - [x] Testado com todos os mods Refreshed ativos (log do launcher de 2026-11-25), sem problemas relatados.
 - [x] Editor vai no pacote como `theme-editor.html`. (2026-11-25)
 - [x] Editor traduzido para inglês (`tools\theme-editor.template.html`), conferido no navegador. (2026-11-25)
-- [ ] Criar o repositório `xupisco/dw2-uithemes` e a primeira release, se o launcher for buscar atualizações por ele.
+- [x] Repositório `xupisco/dw2-uithemes` (público, branch `master`), primeiro push em 2026-11-25. As capturas originais `ss_*.png` ficam fora (`.gitignore`).
+- [ ] Publicar na Workshop e subir as imagens de `workshop\` na galeria.
+- [ ] Primeira release no GitHub (v0.3.0, com o zip do pacote), se o launcher for buscar atualizações por ela.
+- [ ] Licença no repositório (ainda não tem).
 
 ## Perguntas em aberto
 
