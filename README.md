@@ -101,6 +101,10 @@ O que cada campo pinta está no [mapa da tela, em FINDINGS.md](FINDINGS.md#mapa-
 
 Os patches são instalados por recurso, cada um com seu id de Harmony. Se um falhar, os outros continuam funcionando, e a falha vai para o log.
 
-## Licença
+## Credits
 
-MIT, ver [LICENSE](LICENSE).
+Made by Leandro with the help of Claude, Anthropic's AI assistant, which wrote much of the code, the tools and the documentation.
+
+## License
+
+MIT, see [LICENSE](LICENSE).

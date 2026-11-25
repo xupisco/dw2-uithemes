@@ -55,6 +55,8 @@ public class Mod { public Mod(DistantWorlds2.DWGame game) { } }
 - O launcher grava os patches que observou em `%APPDATA%\DW2ModLauncher\hooks-observed.json` (`hooks[]`: `target` e `patches[]` com `owner`, `assembly`, `harmonyId`, `kind`, `effect` como `observes`/`changes-result`/`changes-args`/`skips-original`/`rewrites`). Serve para ver quem mais mexe num método. **confirmado**
   - Em 2026-11-25, com todos os Refreshed: só `DWGame.Update` é compartilhado (com DW2R-Galaxy-View), e todos os patches nele são `observes`.
 - Status opcional por reflexão: `DW2ModLauncher.Loader.ModStatus` (`Register`, `SetLevel`, `Detail`, `Error`, `Installed`, `SetLog`).
+- **Release no GitHub (formato do Refreshed):** tag `<id>-v<versão>` com `<tag>.zip` (pasta do mod dentro), `<tag>.zip.sha256`, `<tag>.manifest.json` (`schema`, `id`, `uid`, `name`, `kinds`, `version`, `tag`, `author`, `shortDescription`, `workshopId`, `minLauncherVersion`, `tags`, `dependencies`, `zip`, `size`, `sha256`, `publishedUtc`) e `<tag>.preview.jpg`. O `mod.json` deles tem `descriptionFile`, `shortDescription`, `previewImage` e `workshopId`. **confirmado** (`DW2R-Galaxy-View-v1.0.5`)
+- **Publicar na Workshop pelo launcher:** ele usa o Steamworks.NET e precisa da `steam_api64.dll` de um SDK recente (com `SteamInternal_SteamAPI_Init`) na pasta do launcher. A 1.0.52 baixada em `D:\apps\` veio sem ela (`DllNotFoundException`). A do DW2 é antiga demais (SDK com `SteamUGC_v016`). Em 2026-11-25 copiamos a do Factorio (v10.87, `SteamUGC_v021`, assinada pela Valve). Para desfazer, é só apagar o arquivo.
 - Referência de mod bem feito: Refreshed Shipset Colors (`3833408745`, repositório `salemonz/DW2-Refreshed`).
 
 ### Teclado
