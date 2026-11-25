@@ -1,11 +1,13 @@
 {
   "name": "DW2UIThemes",
-  "displayName": "UI Themes",
-  "descriptionFile": "description.bbcode",
-  "shortDescription": "Color themes for the game's interface: panels, buttons, tabs, lists and tooltips. Five themes included, plus an editor to make your own.",
-  "previewImage": "preview.jpg",
   "mainModule": "DW2UIThemes.dll",
   "mainClass": "DW2UIThemes.Mod",
+  "dependencies": [],
+  "displayName": "UI Themes",
+  "descriptionFile": "description.bbcode",
+  "shortDescription": "Color themes for the game\u0027s interface: panels, buttons, tabs, lists and tooltips. Five themes included, plus an editor to make your own.",
+  "previewImage": "preview.jpg",
   "version": "0.3.0",
-  "dependencies": []
+  "bundles": [],
+  "workshopId": 3845713174
 }

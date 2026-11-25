@@ -14,7 +14,7 @@ Atualizado em 2026-11-25.
 | 3. Cores personalizadas | substituída pelo editor (`tools\theme-editor.html`) |
 | 4. Troca ao vivo completa, tooltips, janela do objeto selecionado | feito e testado no jogo, com uma limitação aceita (abaixo) |
 | Limpeza antes de publicar (0.3.0) | feito |
-| 5. Publicação | em andamento: metadados, descrição e editor em inglês prontos; faltam imagens e repositório |
+| 5. Publicação | publicado na Workshop (`3845713174`) e no GitHub (release 0.3.0); falta a galeria de imagens |
 
 **Temas:** Amethyst, Basalt (criado no editor pelo usuário), Graphite, Obsidian e Synthwave.
 
@@ -55,7 +55,8 @@ Atualizado em 2026-11-25.
 - [x] Editor vai no pacote como `theme-editor.html`. (2026-11-25)
 - [x] Editor traduzido para inglês (`tools\theme-editor.template.html`), conferido no navegador. (2026-11-25)
 - [x] Repositório `xupisco/dw2-uithemes` (público, branch `master`), primeiro push em 2026-11-25. As capturas originais `ss_*.png` ficam fora (`.gitignore`).
-- [ ] Publicar na Workshop e subir as imagens de `workshop\` na galeria.
+- [x] Publicado na Workshop pelo launcher: id `3845713174` (https://steamcommunity.com/sharedfiles/filedetails/?id=3845713174). O launcher gravou o `workshopId` no `mod.json` e trocou o `author` do `dw2modlauncher.json` para `xupisco` (nome de autor nas configurações dele); os dois foram trazidos para o repositório. (2026-11-25)
+- [ ] Subir as imagens de `workshop\` na galeria da página (primeiro `compare.jpg`).
 - [x] Primeira release no GitHub: `DW2UIThemes-v0.3.0`, com zip, sha256, manifesto e preview no formato do Refreshed, gerados por `tools\build-release.ps1`. (2026-11-25)
 - [ ] Conferir se o launcher enxerga a release (atualização ou instalação pelo GitHub).
 - [x] Licença MIT (`LICENSE`). (2026-11-25)
