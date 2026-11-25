@@ -68,8 +68,8 @@ Atualizado em 2026-11-25.
 - [x] Postfix do `SetColorScheme` com `Priority.Last` (conflito com o Settings Keeper).
 - [x] Conferido no jogo: divisórias, contorno e troca de temas pelo atalho com o Settings Keeper sem perder cores. (2026-11-25)
 - [x] Editor no GitHub Pages (https://xupisco.github.io/dw2-uithemes/, de `docs\` na `master`), formulário de issue "New theme" (rótulo `theme`, pede aceite da licença MIT) e botão "Share on GitHub" no editor. (2026-11-25)
-- [ ] A descrição da Workshop com o link do editor online sobe na próxima publicação.
-- [ ] Subir a versão (0.4.0), release e Workshop.
+- [x] Descrição da Workshop com o link do editor online (subiu na 0.4.0).
+- [x] 0.4.0 publicada na Workshop (pelo launcher) e no GitHub (`DW2UIThemes-v0.4.0`, com `workshopId` no manifesto). (2026-11-25)
 
 ## Perguntas em aberto
 
