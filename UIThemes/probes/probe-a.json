@@ -1,0 +1,14 @@
+{
+  // Diagnostic: one vivid color per suspect field. Not shipped; copy into the installed themes\ folder to use.
+  "name": "Probe A",
+  "colors": {
+    "LightColor": "#FF0000",                    // red
+    "MidColor": "#00FF00",                      // green
+    "DarkColor": "#0000FF",                     // blue
+    "SectionHeaderBackgroundColor": "#FFFF00",  // yellow
+    "BackColorFaded": "#FF00FF",                // magenta
+    "TextBackgroundLegibilityColor": "#00FFFF", // cyan
+    "ShadowColor": "#FF8000",                   // orange
+    "BackColorDarkHalfTransparent": "#8000FF"   // purple
+  }
+}

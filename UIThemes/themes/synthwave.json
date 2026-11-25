@@ -1,0 +1,36 @@
+{
+  // Hot pink accent, cyan headers and button text, deep indigo panels.
+  "name": "Synthwave",
+  "colors": {
+    "DialogBackColor": "#140A26",
+    "MainViewHeaderBackColor": "#1A0C30",
+    "BackColorLightTransparent": "#140A26",
+    "BackColorLightTransparentLess": "#140A26",
+    "BackColorLightTransparentMore": "#140A26",
+    "HeaderBackColor": "#1C0E36",
+    "HeaderForeColor": "#5FF3FF",
+    "HeaderDecorationColor": "#FF4FB8",
+
+    "AccentColor": "#FF4FB8",
+    "AccentColorLight": "#FF8AD4",
+    "AccentColorMainView": "#E040A0",
+    "AccentColorMainViewBright": "#FF60C0",
+
+    "ButtonColorToggle": "#FF4FB8",
+    "ButtonColorToggleHover": "#FF80CC",
+    "ButtonColorText": "#5FF3FF",
+    "ButtonColorTextHover": "#B0FAFF",
+    "ButtonColorTextDisabled": "#2A6670",
+    "ButtonColorDropDownSelector": "#5FF3FF",
+    "ButtonColorDropDownSelectorHover": "#FF80CC",
+
+    "PopupListCurrentItemColor": "#D03A98",
+    "PopupListCurrentItemTextColor": "#FFFFFF",
+    "PopupListHighlightColor": "#200C30",
+
+    // Beyond the game's schemes.
+    "BorderColor": "#7A5FD0",
+    "PopupListBorderColor": "#4A2A80",
+    "HoverInfoBorderColor": "#4A2A80"
+  }
+}

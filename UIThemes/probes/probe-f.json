@@ -1,0 +1,12 @@
+{
+  // Diagnostic: the selected-object window's own control colors (DWControl, SelectionPanel only). Not shipped.
+  // #RRGGBB keeps the game's alpha for each color.
+  "name": "Probe F",
+  "colors": {
+    "SelectionPanel.BackColor": "#FF0000",    // red
+    "SelectionPanel.ShadowColor": "#00FF00",  // green
+    "SelectionPanel.DarkColor": "#0000FF",    // blue
+    "SelectionPanel.BorderColor": "#FFFF00",  // yellow
+    "SelectionPanel.ForeColor": "#FF00FF"     // magenta
+  }
+}

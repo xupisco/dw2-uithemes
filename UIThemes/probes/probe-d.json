@@ -1,0 +1,15 @@
+{
+  // Diagnostic for the selected-object window (bottom left). Not shipped.
+  // Panel backgrounds the other probes did not cover, at full alpha so they are easy to spot.
+  "name": "Probe D",
+  "colors": {
+    "SelectionPanelTextLegibilityBackColor": "#FF0000FF",  // red
+    "RaceSummaryBackColor": "#00FF00FF",                   // green
+    "CharacterPanelBackColor": "#0000FFFF",                // blue
+    "HintBackColor": "#FFFF00FF",                          // yellow
+    "GalactopediaPanelBackColor": "#FF00FFFF",             // magenta
+    "ShipDesignRendererHoverInfoBackColor": "#00FFFFFF",   // cyan
+    "DiplomacyConversationPanelBackColor": "#FF8000FF",    // orange
+    "TextBoxBackColor": "#8000FFFF"                        // purple
+  }
+}

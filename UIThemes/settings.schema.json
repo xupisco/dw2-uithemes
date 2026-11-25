@@ -1,0 +1,8 @@
+{
+  "Theme": [
+    {"key": "Theme", "type": "enum", "label": "UI theme", "description": "Colors for the game's interface, applied on top of the color scheme chosen in the game's options (Colorblind Assist keeps its own status colors). Off: the game's scheme as is. In game, Ctrl+Alt+Plus and Ctrl+Alt+Minus switch themes for the session.", "options": ["Off", "Amethyst", "Basalt", "Graphite", "Obsidian", "Synthwave"], "default": "Basalt"}
+  ],
+  "Developer": [
+    {"key": "DumpColors", "type": "bool", "label": "Dump colors on scheme change", "description": "Writes every interface color to data\\Logs\\DW2UIThemes\\scheme-n.json each time the game applies a color scheme.", "default": false, "hidden": true}
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  // Neutral steel blue-gray. Also changes colors no game scheme touches: main background, buttons, borders, popups, tooltips.
+  "name": "Graphite",
+  "colors": {
+    "DialogBackColor": "#0E1116",
+    "MainViewHeaderBackColor": "#12161C",
+    "BackColorLightTransparent": "#0E1116",
+    "BackColorLightTransparentLess": "#0E1116",
+    "BackColorLightTransparentMore": "#0E1116",
+    "HeaderBackColor": "#151A21",
+    "HeaderForeColor": "#E4E8EE",
+    "HeaderDecorationColor": "#9FB3C8",
+
+    "AccentColor": "#8FA6BF",
+    "AccentColorLight": "#C4D3E3",
+    "AccentColorMainView": "#7F96AF",
+    "AccentColorMainViewBright": "#A9BED4",
+
+    "ButtonColorToggle": "#8FA6BF",
+    "ButtonColorToggleHover": "#B4C6D9",
+    "ButtonColorText": "#D4D8DE",
+    "ButtonColorTextHover": "#FFFFFF",
+    "ButtonColorTextDisabled": "#6A717C",
+    "ButtonColorDropDownSelector": "#D4D8DE",
+    "ButtonColorDropDownSelectorHover": "#FFFFFF",
+
+    "PopupListCurrentItemColor": "#6F8499",
+    "PopupListCurrentItemTextColor": "#FFFFFF",
+    "PopupListHighlightColor": "#1A2028",
+
+    // Beyond the game's schemes.
+    "BackColor": "#0A0D11",
+    "ButtonColor": "#2A3038",
+    "ButtonColorHover": "#3A424D",
+    "ButtonColorBright": "#5B6573",
+    "BorderColor": "#8C97A6",
+    "PopupListBackColor": "#1E232AFA",
+    "PopupListBorderColor": "#3A424D",
+    "HoverInfoBackColor": "#12161CF2",
+    "HoverInfoBorderColor": "#3A424D"
+  }
+}

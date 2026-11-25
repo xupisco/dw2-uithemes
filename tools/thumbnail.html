@@ -1,0 +1,137 @@
+<!doctype html>
+<!-- Workshop preview image. Render with tools\build-thumbnail.ps1 (1280x720 CSS at 2x = 2560x1440). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>UI Themes preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 720px; overflow: hidden; }
+  body {
+    font-family: "Segoe UI", system-ui, sans-serif; color: #e8e8ee;
+    background:
+      radial-gradient(700px 380px at 82% 8%, rgba(120, 70, 200, .22), transparent 70%),
+      radial-gradient(600px 360px at 8% 95%, rgba(40, 90, 170, .20), transparent 70%),
+      radial-gradient(900px 500px at 50% 40%, #12141c 0%, #07080c 70%),
+      #05060a;
+    position: relative;
+  }
+  .stars { position: absolute; inset: 0; pointer-events: none; }
+  .stars i { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: #fff; }
+
+  .title { position: absolute; left: 60px; top: 40px; }
+  .kicker { font-size: 15px; letter-spacing: 5px; color: #9aa0b4; font-weight: 600; }
+  h1 { font-size: 104px; line-height: 1; font-weight: 700; letter-spacing: 6px; margin-top: 8px;
+    background: linear-gradient(90deg, #f0e6ff 0%, #c9b6ff 30%, #9fc4ff 60%, #ffb3dd 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { font-size: 22px; color: #c4c8d6; margin-top: 12px; letter-spacing: .5px; }
+  .sub b { color: #fff; font-weight: 600; }
+  .keys { position: absolute; right: 60px; top: 70px; text-align: right; font-size: 17px; color: #aeb3c4; line-height: 1.9; }
+  .keys kbd { font: 600 15px "Segoe UI", sans-serif; color: #fff; padding: 3px 9px; border-radius: 4px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.22); }
+
+  .row { position: absolute; left: 50px; right: 50px; bottom: 44px; display: flex; gap: 20px; }
+  .card { flex: 1; background: var(--back); border: 1px solid var(--border); color: var(--fore);
+    box-shadow: 0 18px 40px rgba(0,0,0,.55), 0 0 0 1px rgba(0,0,0,.4); font-size: 12.5px; }
+  .head { position: relative; height: 34px; display: flex; align-items: center; justify-content: center;
+    background: var(--header); color: var(--headerFore); font-size: 17px; letter-spacing: 1.5px; font-weight: 600; overflow: hidden; }
+  .head::before, .head::after { content: ""; position: absolute; top: 9px; bottom: 9px; width: 22%;
+    background: repeating-linear-gradient(90deg, var(--deco) 0 7px, transparent 7px 11px); }
+  .head::before { left: 6px; } .head::after { right: 6px; }
+  .head span { position: relative; z-index: 1; padding: 0 10px; background: var(--header); }
+  .stats { margin: 8px; border-collapse: collapse; width: calc(100% - 16px); }
+  .stats td { border: 1px solid var(--faint); padding: 3px 7px; }
+  .stats td:last-child { text-align: center; width: 44px; }
+  .tabs { display: flex; margin: 0 8px; border-bottom: 2px solid var(--mid); }
+  .tabs div { flex: 1; text-align: center; padding: 4px 0; background: var(--button); color: var(--text); border-right: 1px solid var(--back); font-size: 12px; }
+  .tabs .on { background: linear-gradient(var(--toggle), var(--toggleDark)); color: #fff; }
+  .section { display: flex; align-items: center; gap: 6px; margin: 10px 8px 6px; font-size: 11.5px; letter-spacing: .5px; }
+  .section i { flex: 1; height: 7px; background: var(--mid); }
+  .list { margin: 0 8px; display: grid; gap: 3px; }
+  .list div { padding: 5px 8px; background: var(--button); color: var(--fore); }
+  .list small { display: block; opacity: .6; font-size: 11px; }
+  .list .sel { background: linear-gradient(var(--toggle), var(--toggleDark)); color: #fff; }
+  .list .sel small { opacity: .8; }
+  .skill { display: grid; grid-template-columns: 1fr 70px; gap: 8px; align-items: center; margin: 10px 8px; font-size: 11.5px; }
+  .skill .track { height: 10px; background: rgba(0,0,0,.5); }
+  .skill .fill { height: 100%; background: var(--accent); }
+  .btn { margin: 0 8px 10px; padding: 6px; text-align: center; background: var(--button); color: var(--text); border: 1px solid var(--border); }
+  .def { position: absolute; top: -26px; left: 0; right: 0; text-align: center; font-size: 12px; letter-spacing: 3px; color: #cfd3df; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<div class="title">
+  <div class="kicker">DISTANT WORLDS 2 MOD</div>
+  <h1>UI THEMES</h1>
+  <div class="sub"><b>Five themes</b> for panels, buttons, tabs, lists and tooltips &nbsp;·&nbsp; <b>theme editor</b> included</div>
+</div>
+<div class="keys">
+  Switch in game &nbsp;<kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>+</kbd><br>
+  Make your own in the editor
+</div>
+
+<div class="row" id="row"></div>
+
+<script>
+// Colors taken from UIThemes\themes\*.json; fields a theme leaves out use the game's base values.
+const THEMES = [
+  { name: "AMETHYST", back: "#170C24", header: "#1E1030", headerFore: "#E6DDF5", deco: "#B98CFF", accent: "#A070F0",
+    toggle: "#9A6AE8", button: "#303030", border: "#AAAAAA", fore: "#D4D4D4", text: "#C0A4F0", faint: "#30303080" },
+  { name: "BASALT", back: "#121212F0", header: "#1A1A1A", headerFore: "#DADADA", deco: "#2D2D2E", accent: "#5076B4",
+    toggle: "#545454C5", button: "#232323", border: "#333333", fore: "#D4D4D4", text: "#CFCFCF", faint: "#2A2A2A80", def: true },
+  { name: "GRAPHITE", back: "#0E1116", header: "#151A21", headerFore: "#E4E8EE", deco: "#9FB3C8", accent: "#8FA6BF",
+    toggle: "#8FA6BF", button: "#2A3038", border: "#8C97A6", fore: "#D4D4D4", text: "#D4D8DE", faint: "#30303080" },
+  { name: "OBSIDIAN", back: "#121212", header: "#1A1A1A", headerFore: "#DADADA", deco: "#222222", accent: "#C49A86",
+    toggle: "#8A6E62", button: "#232323", border: "#333333", fore: "#D4D4D4", text: "#CFCFCF", faint: "#2A2A2A80" },
+  { name: "SYNTHWAVE", back: "#140A26", header: "#1C0E36", headerFore: "#5FF3FF", deco: "#FF4FB8", accent: "#FF4FB8",
+    toggle: "#FF4FB8", button: "#303030", border: "#7A5FD0", fore: "#D4D4D4", text: "#5FF3FF", faint: "#30303080" },
+];
+
+const hex = s => { s = s.replace("#", ""); return [0, 2, 4, 6].map(i => i < s.length ? parseInt(s.slice(i, i + 2), 16) : 255); };
+const css = ([r, g, b, a]) => `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${(a / 255).toFixed(3)})`;
+const scale = (s, k) => { const c = hex(s); return css([c[0] * k, c[1] * k, c[2] * k, c[3]]); };
+
+const row = document.getElementById("row");
+for (const t of THEMES) {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.style.position = "relative";
+  const vars = { back: css(hex(t.back)), header: css(hex(t.header)), headerFore: css(hex(t.headerFore)), deco: css(hex(t.deco)),
+    accent: css(hex(t.accent)), mid: scale(t.accent, 0.7), toggle: css(hex(t.toggle)), toggleDark: scale(t.toggle, 0.72),
+    button: css(hex(t.button)), border: css(hex(t.border)), fore: css(hex(t.fore)), text: css(hex(t.text)), faint: css(hex(t.faint)) };
+  for (const [k, v] of Object.entries(vars)) card.style.setProperty("--" + k, v);
+  card.innerHTML = `
+    ${t.def ? '<div class="def">DEFAULT</div>' : ""}
+    <div class="head"><span>${t.name}</span></div>
+    <table class="stats">
+      <tr><td>Explored Systems</td><td>12</td></tr>
+      <tr><td>Known Systems</td><td>148</td></tr>
+    </table>
+    <div class="tabs"><div class="on">◎</div><div>◌</div><div>⚑</div><div>✕</div></div>
+    <div class="section"><i></i>SHIPS (3)<i></i></div>
+    <div class="list">
+      <div class="sel">Enchanted Solace<small>Survey mission</small></div>
+      <div>Swift Evasion<small>Idle</small></div>
+      <div>Silent Horizon<small>Refueling</small></div>
+    </div>
+    <div class="skill"><span>Research +4%</span><div class="track"><div class="fill" style="width:${[62, 74, 48, 66, 80][THEMES.indexOf(t)]}%"></div></div></div>
+    <div class="btn">Transfer</div>`;
+  row.appendChild(card);
+}
+
+// Fixed star field (deterministic, so every render looks the same).
+let seed = 7;
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const stars = document.getElementById("stars");
+for (let i = 0; i < 140; i++) {
+  const s = document.createElement("i");
+  s.style.left = (rnd() * 100) + "%"; s.style.top = (rnd() * 100) + "%";
+  s.style.opacity = (0.15 + rnd() * 0.6).toFixed(2);
+  if (rnd() > 0.85) { s.style.width = s.style.height = "3px"; }
+  stars.appendChild(s);
+}
+</script>
+</body>
+</html>

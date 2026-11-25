@@ -1,0 +1,7 @@
+bin/
+obj/
+*.user
+.vs/
+
+# Raw in-game captures; tools\build-screenshots.ps1 turns them into workshop\*.jpg
+ss_*.png

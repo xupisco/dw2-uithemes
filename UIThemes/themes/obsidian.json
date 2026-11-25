@@ -1,0 +1,68 @@
+{
+  // Dark, neutral grays (no blue tint), flat: no header stripes, no edge gradient, dark gray borders.
+  // Hover: pastel peach (#E6B89C) on text and icons, a faint warm tint on button backgrounds.
+  "name": "Obsidian",
+  "opaqueTooltips": true,
+  "colors": {
+    "DialogBackColor": "#121212",
+    "MainViewHeaderBackColor": "#161616",
+    "BackColorLightTransparent": "#121212",
+    "BackColorLightTransparentLess": "#121212",
+    "BackColorLightTransparentMore": "#121212",
+    "HeaderBackColor": "#1A1A1A",
+    "HeaderForeColor": "#DADADA",
+    // Header stripes almost the same as the header background, so they disappear.
+    "HeaderDecorationColor": "#222222",
+
+    // Peach accent. AccentColorMid/Dark/MidDark/VeryDark are derived from it (x0.7, x0.5, x0.25, x0.125);
+    // "active mode" buttons (bottom right) are drawn with Mid -> Dark, so they match the toggled ones.
+    "AccentColor": "#C49A86",
+    "AccentColorLight": "#E6B89C",
+    "AccentColorMainView": "#B08A78",
+    "AccentColorMainViewBright": "#D4AA94",
+
+    // Toggled/selected buttons and list items: muted peach, lighter on hover.
+    "ButtonColorToggle": "#8A6E62",
+    "ButtonColorToggleHover": "#A88A7C",
+    "ButtonColorText": "#CFCFCF",
+    "ButtonColorTextHover": "#E6B89C",
+    "ButtonColorTextDisabled": "#5C5C5C",
+    "ButtonColorDropDownSelector": "#BDBDBD",
+    "ButtonColorDropDownSelectorHover": "#E6B89C",
+
+    "PopupListCurrentItemColor": "#4A4A4A",
+    "PopupListCurrentItemTextColor": "#E6B89C",
+    "PopupListHighlightColor": "#2E2926",
+
+    // Hover outside buttons: text, badges and icons.
+    "ForeColorHovered": "#E6B89C",
+    "BadgeTextColorHovered": "#E6B89C",
+    "ButtonImageTintColorHover": "#E6B89C",
+    "ButtonImageTintColorToggledHover": "#E6B89C",
+
+    // Beyond the game's schemes: flat surfaces.
+    "BackColor": "#0C0C0C",
+    "ButtonColor": "#232323",
+    "ButtonColorHover": "#45392F",
+    // Hovered list rows are drawn from this (gray #525252 -> #414141 before).
+    "ButtonColorBright": "#5A4A42",
+    "ButtonColorDisabled": "#141414",
+    "SectionHeaderBackgroundColor": "#242424",
+    "PopupListBackColor": "#1C1C1CFA",
+    "HoverInfoBackColor": "#161616F2",
+
+    // No gradient on panel edges (the game tints an edge texture with this color).
+    "OverlayTintColor": "#00000000",
+
+    // Tooltip background (game default #202020F8), outside ColorHelper.
+    "UserInterfaceController.HoverTipBackColorDefault": "#141414FF",
+    // Tooltips inside the selected-object window (game: #404040E8).
+    "SelectionPanel.HotspotBackColor": "#141414FF",
+
+    // Dark gray borders (the edge gradient stays off via OverlayTintColor).
+    "BorderColor": "#333333",
+    "FaintBorderColor": "#2A2A2A80",
+    "PopupListBorderColor": "#333333",
+    "HoverInfoBorderColor": "#333333"
+  }
+}

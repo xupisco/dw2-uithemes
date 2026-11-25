@@ -1,0 +1,11 @@
+{
+  // Diagnostic for the selected-object window (SelectionPanel). Not shipped.
+  // #RRGGBB keeps the game's alpha for each color, so transparency stays as it was.
+  "name": "Probe E",
+  "colors": {
+    "SelectionPanel.SectionBackColor": "#FF0000",  // red
+    "SelectionPanel.HotspotBackColor": "#00FF00",  // green
+    "SelectionPanel.HighlightColor": "#0000FF",    // blue
+    "SelectionPanel.GraphBackColor": "#FFFF00"     // yellow
+  }
+}

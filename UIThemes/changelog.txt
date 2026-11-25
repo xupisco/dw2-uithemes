@@ -1,0 +1,33 @@
+UI Themes - changelog
+
+0.3.0 (2026-11-25)
+- Five themes: Amethyst, Basalt (default), Graphite, Obsidian and Synthwave.
+- Pick the theme in the DW2 Mod Launcher (UI theme option), or in options.json
+  without the launcher: {"Theme": "Basalt"}.
+- Themes apply on top of the color scheme chosen in the game's options;
+  Colorblind Assist keeps its own warning and status colors.
+- In game: Ctrl+Alt+Plus / Ctrl+Alt+Minus switch themes for the session
+  (Off included), Ctrl+Alt+0 shows the current theme. The theme name shows
+  on screen.
+- Switching themes in game also updates buttons, tabs and list selections
+  that were already on screen.
+- The themes folder is read again on every switch, so an edited theme file
+  shows up without restarting the game.
+- Panel side gradient removed by the themes (OverlayTintColor).
+- Text tooltips use the theme's background; the opaqueTooltips option draws
+  them without the panel's transparency.
+- Selected object window: tooltip background follows the theme.
+- Themes are plain JSON files: any ColorHelper color, plus the static colors
+  of UserInterfaceController and EmpireMessage and the SelectionPanel colors.
+  Accent shades are derived from AccentColor when a theme leaves them out.
+- Theme editor included (theme-editor.html, opens in the browser, offline).
+- Log: data\Logs\DW2UIThemes\DW2UIThemes.log
+
+Known limitations
+- The side gradient of the selected object window does not come from a color
+  and keeps the game's look.
+- The system panel at the bottom center and map elements (selection frame,
+  icons, population bar) do not follow the theme.
+
+0.1.0 - 0.2.0
+- Development versions, not released.

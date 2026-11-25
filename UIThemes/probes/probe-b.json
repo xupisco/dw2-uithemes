@@ -1,0 +1,14 @@
+{
+  // Diagnostic: one vivid color per suspect field. Not shipped; copy into the installed themes\ folder to use.
+  "name": "Probe B",
+  "colors": {
+    "TintColorTransparentHalf": "#FF0000",      // red
+    "TintColorTransparentDim": "#00FF00",       // green
+    "TintColorTransparentQuarter": "#0000FF",   // blue
+    "TintColorFadedThreeQuarters": "#FFFF00",   // yellow
+    "TintColorFadedHalf": "#FF00FF",            // magenta
+    "TintColorFadedQuarter": "#00FFFF",         // cyan
+    "HalfTransparentTint": "#FF8000",           // orange
+    "QuarterTransparentTint": "#8000FF"         // purple
+  }
+}

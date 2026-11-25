@@ -1,0 +1,32 @@
+{
+  // Purple accent on violet-tinted panels. Only the colors the game's own schemes change.
+  "name": "Amethyst",
+  "colors": {
+    "DialogBackColor": "#170C24",
+    "MainViewHeaderBackColor": "#1A0D2A",
+    "BackColorLightTransparent": "#170C24",
+    "BackColorLightTransparentLess": "#170C24",
+    "BackColorLightTransparentMore": "#170C24",
+    "HeaderBackColor": "#1E1030",
+    "HeaderForeColor": "#E6DDF5",
+    "HeaderDecorationColor": "#B98CFF",
+
+    // AccentColorMid/Dark/MidDark/VeryDark are derived from AccentColor (x0.7, x0.5, x0.25, x0.125).
+    "AccentColor": "#A070F0",
+    "AccentColorLight": "#C8A8FF",
+    "AccentColorMainView": "#9060D8",
+    "AccentColorMainViewBright": "#B080FF",
+
+    "ButtonColorToggle": "#9A6AE8",
+    "ButtonColorToggleHover": "#B58CFF",
+    "ButtonColorText": "#C0A4F0",
+    "ButtonColorTextHover": "#E2D2FF",
+    "ButtonColorTextDisabled": "#4E3A70",
+    "ButtonColorDropDownSelector": "#D4D4D4",
+    "ButtonColorDropDownSelectorHover": "#C8A8FF",
+
+    "PopupListCurrentItemColor": "#8A5AD8",
+    "PopupListCurrentItemTextColor": "#F0E4FF",
+    "PopupListHighlightColor": "#140C20"
+  }
+}

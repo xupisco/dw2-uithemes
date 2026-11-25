@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>DW2UIThemes</AssemblyName>
+    <RootNamespace>DW2UIThemes</RootNamespace>
+    <Version>0.3.0</Version>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <!-- The game only runs on Windows; Stride.Input marks its API as Windows-only. -->
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+    <!-- Override with: dotnet build -p:GameDir="..." -->
+    <GameDir Condition="'$(GameDir)' == ''">D:\games\steam\steamapps\common\Distant Worlds 2</GameDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony" HintPath="$(GameDir)\0Harmony.dll" Private="false" />
+    <Reference Include="DistantWorlds2" HintPath="$(GameDir)\DistantWorlds2.dll" Private="false" />
+    <Reference Include="DistantWorlds.Types" HintPath="$(GameDir)\DistantWorlds.Types.dll" Private="false" />
+    <Reference Include="DistantWorlds.UI" HintPath="$(GameDir)\DistantWorlds.UI.dll" Private="false" />
+    <Reference Include="Stride.Core" HintPath="$(GameDir)\Stride.Core.dll" Private="false" />
+    <Reference Include="Stride.Core.Mathematics" HintPath="$(GameDir)\Stride.Core.Mathematics.dll" Private="false" />
+    <Reference Include="Stride.Engine" HintPath="$(GameDir)\Stride.Engine.dll" Private="false" />
+    <Reference Include="Stride.Games" HintPath="$(GameDir)\Stride.Games.dll" Private="false" />
+    <Reference Include="Stride.Input" HintPath="$(GameDir)\Stride.Input.dll" Private="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="mod.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="settings.schema.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="changelog.txt" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="dw2modlauncher.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="description.bbcode" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="preview.jpg" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\tools\theme-editor.html" Link="theme-editor.html" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="themes\*.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

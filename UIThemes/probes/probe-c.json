@@ -1,0 +1,15 @@
+{
+  // Diagnostic: one vivid color per suspect field. Not shipped; copy into the installed themes\ folder to use.
+  // HoverBackTintColor is almost invisible in the game (alpha 04), so here it gets a visible alpha.
+  "name": "Probe C",
+  "colors": {
+    "MidDarkTint": "#FF0000",                      // red
+    "DarkTint": "#00FF00",                         // green
+    "HoverBackTintColor": "#0000FF80",             // blue
+    "OverlayTintColor": "#FFFF00",                 // yellow
+    "BackColorDarkTransparent": "#FF00FF",         // magenta
+    "BackColorDarkQuarterTransparent": "#00FFFF",  // cyan
+    "BackColorDarkSlightTransparent": "#FF8000",   // orange
+    "GraphBackColor": "#8000FF"                    // purple
+  }
+}
