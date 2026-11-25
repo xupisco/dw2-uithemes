@@ -41,12 +41,14 @@ While the game is running the DLL is locked: close the game to install a new DLL
 
 ## Make a theme
 
-The easiest way is the editor:
+The easiest way is the editor, online at **https://xupisco.github.io/dw2-uithemes/** (GitHub Pages, from `docs\index.html`), and also in the mod folder as `theme-editor.html`:
 
-1. Open `tools\theme-editor.html` in a browser (it works offline).
+1. Open `tools\theme-editor.html` in a browser (it works offline), or the online page.
 2. Pick a starting point, adjust the colors on the mockup and click **Copy JSON**.
 3. Save it as `UIThemes\themes\<name>.json` and add the name to `options` in `UIThemes\settings.schema.json`.
-4. Run `.\tools\build-editor.ps1` so the editor includes the new theme as a preset.
+4. Run `.\tools\build-editor.ps1` so the editor includes the new theme as a preset. It writes `tools\theme-editor.html` and `docs\index.html`; commit both so the online editor follows.
+
+**Themes from players:** the editor's **Share on GitHub** button opens a "New theme" issue (form in `.github\ISSUE_TEMPLATE\theme.yml`, label `theme`) with the name and the JSON filled in. The form asks the player to agree to the MIT license.
 
 ### Format
 

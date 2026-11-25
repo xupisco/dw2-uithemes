@@ -34,4 +34,7 @@ Get-ChildItem "$root\UIThemes\themes\*.json" | Sort-Object Name | ForEach-Object
 $data = "const BASE = " + ($base | ConvertTo-Json -Compress) + ";`nconst PRESETS = " + ($presets | ConvertTo-Json -Compress -Depth 4) + ";"
 $html = (Get-Content "$PSScriptRoot\theme-editor.template.html" -Raw).Replace('/*__DATA__*/', $data)
 Set-Content "$PSScriptRoot\theme-editor.html" $html -Encoding utf8NoBOM -NoNewline
-Write-Host "Wrote tools\theme-editor.html ($($base.Count) base colors; presets: $($presets.Keys -join ', '))"
+# Same page for GitHub Pages (published from docs\ on master): https://xupisco.github.io/dw2-uithemes/
+New-Item -ItemType Directory -Force "$root\docs" | Out-Null
+Set-Content "$root\docs\index.html" $html -Encoding utf8NoBOM -NoNewline
+Write-Host "Wrote tools\theme-editor.html and docs\index.html ($($base.Count) base colors; presets: $($presets.Keys -join ', '))"

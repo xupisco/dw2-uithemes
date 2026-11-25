@@ -139,6 +139,7 @@
   <label for="themeName">Name</label>
   <input type="text" id="themeName" value="My theme" size="14">
   <button class="primary" id="copyJson">Copy JSON</button>
+  <button id="shareGitHub" title="Open a new issue on GitHub with this theme, to suggest it for the mod (needs a GitHub account)">Share on GitHub</button>
   <button id="resetAll">Reset to preset</button>
   <span class="toast" id="toast"></span>
 </header>
@@ -227,7 +228,8 @@
     <button id="importJson">Load the JSON above into the editor</button>
     <span class="note">You can paste an existing theme here (// comments are fine) and click load.</span>
   </div>
-  <p class="note">To use the theme: save the JSON as a new .json file in the mod's <code>themes</code> folder (for example <code>themes\my-theme.json</code>), then press Ctrl+Alt+Plus in game until its name shows up.</p>
+  <p class="note">To use the theme: save the JSON as a new .json file in the mod's <code>themes</code> folder (for example <code>themes\my-theme.json</code>), then press Ctrl+Alt+Plus in game until its name shows up.
+    Made something you like? <b>Share on GitHub</b> (at the top) opens an issue with the theme, so it can be added to the mod.</p>
 </section>
 
 <script>
@@ -326,6 +328,8 @@ const FIELDS = GROUPS.flatMap(g => g[1].map(f => f[0]));
 const STORE_KEY = "dw2-theme-editor-v1";
 const ECLIPSE = "Eclipse (game)";   // the game's default scheme, no theme
 const DEFAULT_NAME = "My theme";
+const REPO = "xupisco/dw2-uithemes";   // where "Share on GitHub" opens the issue
+const MAX_URL = 7500;                  // GitHub refuses much longer URLs
 
 // State: field -> "#RRGGBBAA"; auto: shade field -> derived from AccentColor.
 let state = {}, auto = {}, presetName = "Obsidian";
@@ -485,6 +489,21 @@ function init() {
     const txt = themeJson();
     try { await navigator.clipboard.writeText(txt); toast("JSON copied"); }
     catch (e) { const ta = document.getElementById("json"); ta.focus(); ta.select(); document.execCommand("copy"); toast("JSON copied"); }
+  });
+  // Opens the "New theme" issue form with the name and JSON filled in (form fields take query parameters by id).
+  document.getElementById("shareGitHub").addEventListener("click", async () => {
+    const name = document.getElementById("themeName").value.trim() || DEFAULT_NAME;
+    const json = themeJson();
+    const base = `https://github.com/${REPO}/issues/new?template=theme.yml&title=${encodeURIComponent("Theme: " + name)}` +
+      `&theme-name=${encodeURIComponent(name)}`;
+    let url = base + `&theme-json=${encodeURIComponent(json)}`;
+    if (url.length > MAX_URL) {
+      // Too long for GitHub: copy it and let the user paste it into the form.
+      try { await navigator.clipboard.writeText(json); } catch (e) {}
+      url = base;
+      toast("JSON copied: paste it in the issue");
+    }
+    window.open(url, "_blank", "noopener");
   });
   document.querySelector(".mock").addEventListener("click", ev => {
     const el = ev.target.closest("[data-f]");

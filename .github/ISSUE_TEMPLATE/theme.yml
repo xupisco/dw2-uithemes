@@ -1,0 +1,43 @@
+name: New theme
+description: Share a theme made in the theme editor, to be added to the mod.
+title: "Theme: "
+labels: ["theme"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing a theme! The editor's **Share on GitHub** button fills in the name and the JSON for you.
+        Editor online: https://xupisco.github.io/dw2-uithemes/ (also in the mod folder as `theme-editor.html`).
+  - type: input
+    id: theme-name
+    attributes:
+      label: Theme name
+      description: The name shown in game and in the launcher.
+      placeholder: My theme
+    validations:
+      required: true
+  - type: textarea
+    id: theme-json
+    attributes:
+      label: Theme JSON
+      description: The JSON from the editor (Copy JSON).
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Optional. Drag in-game captures here, they help a lot.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Optional. The idea behind the colors, anything that looked off in game, etc.
+  - type: checkboxes
+    id: license
+    attributes:
+      label: License
+      options:
+        - label: The theme can be included in the mod and changed, under the mod's MIT license.
+          required: true
