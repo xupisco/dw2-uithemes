@@ -82,6 +82,11 @@ O que cada campo pinta está no [mapa da tela, em FINDINGS.md](FINDINGS.md#mapa-
 - **Referência:** `reference\scheme-<n>-<nome>.json` são os 7 esquemas do jogo, gravados em jogo.
 - **Imagem da Workshop:** `.\tools\build-thumbnail.ps1` renderiza `tools\thumbnail.html` com o Edge sem janela e grava `UIThemes\preview.jpg` (2560×1440). As cores dos temas estão copiadas no HTML: ao mudar um tema, atualize a lista `THEMES` lá.
 - **Capturas da Workshop:** salve as capturas do jogo como `ss_<tema>.png` na raiz (mesma cena em todas) e rode `.\tools\build-screenshots.ps1`. Ele grava em `workshop\` um JPG de cada captura e o `compare.jpg`, com o painel da esquerda dos temas lado a lado (área ajustável com `-Crop x,y,largura,altura`). A pasta `workshop\` não vai no pacote.
+- **Release no GitHub:** `.\tools\build-release.ps1` compila e grava em `release\` os arquivos que o launcher lê (mesmo formato do Refreshed): `DW2UIThemes-v<versão>.zip` (pasta `DW2UIThemes/` dentro), `.zip.sha256`, `.manifest.json` e `.preview.jpg`. Depois:
+  ```powershell
+  gh release create DW2UIThemes-v<versão> release\DW2UIThemes-v<versão>.* --target master --title "UI Themes <versão>" --notes-file <notas>
+  ```
+  Antes, suba a versão no `UIThemes.csproj` e no `mod.json` e escreva a entrada no `changelog.txt`. Quando o mod tiver `workshopId` no `mod.json`, o manifesto inclui o id.
 
 ## Código (`UIThemes\src\`)
 

@@ -5,3 +5,6 @@ obj/
 
 # Raw in-game captures; tools\build-screenshots.ps1 turns them into workshop\*.jpg
 ss_*.png
+
+# Output of tools\build-release.ps1 (uploaded to GitHub releases)
+release/
