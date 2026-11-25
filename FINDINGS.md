@@ -158,7 +158,7 @@ Há quatro fontes, e cada uma se comporta de um jeito ao trocar o tema com o jog
 | Janela do objeto selecionado: faixas alternadas | `SelectionPanel.SectionBackColor` (`#18181880`) | própria | confirmado (Probe E) |
 | Janela do objeto selecionado: tooltips | `SelectionPanel.HotspotBackColor` (`#404040E8`) | própria | confirmado |
 | Janela do objeto selecionado: texto / sombra do texto | `SelectionPanel.ForeColor` / `ShadowColor` (DWControl) | cópia | confirmado (Probe F) |
-| Janela do objeto selecionado: degradê lateral | **nenhuma cor**: textura ou cor fixa | — | confirmado que não é cor (6 sondas) |
+| Janela do objeto selecionado: degradê lateral | a mesma textura `1024×2` do degradê dos outros painéis, mas pintada com **branco fixo** (os outros usam `OverlayTintColor`). Por isso nenhuma sonda pegou. O mod pinta essa textura com o `OverlayTintColor` do tema enquanto a `SelectionPanel` desenha (`Render` e `RenderToTexture`) | fixo | confirmado (levantamento + jogo, 2026-11-25) |
 | Divisórias das abas de seção (topo esquerdo) | `EmpireSectionList.ForeColor`: texturas 16×90 e 2×90 desenhadas pelo contêiner | cópia de `ButtonColorText` (`#CFCFCF` no Basalt) | confirmado (levantamento + tema de teste, 2026-11-25) |
 | Divisórias dos botões do jogo (topo direito: Galactopedia, Menu, Vitória, Tela limpa) | `AngledButtonStrip.ForeColor`, mesmas texturas | cópia de `ButtonColorText` | confirmado |
 | Divisórias dos botões do mapa (baixo direito) | `MapOverlayButtons.DarkColor`, mesmas texturas | cópia fixa `#606060` | confirmado (levantamento) |

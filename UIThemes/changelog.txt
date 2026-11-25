@@ -11,6 +11,8 @@ Next version (not released yet)
   theme editor.
 - Works with Settings Keeper: the theme is applied after other mods react to a
   color scheme change, so switching themes no longer loses colors.
+- The side gradient of the selected object window is gone too: it uses the
+  theme's OverlayTintColor like the other panels (it was a fixed white tint).
 - borders.flag (for theme makers): records which controls draw borders and in
   which color.
 

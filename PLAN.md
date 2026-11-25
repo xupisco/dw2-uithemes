@@ -30,7 +30,6 @@ Atualizado em 2026-11-25.
 
 ### Limitações aceitas
 
-- Degradê lateral da janela do objeto selecionado: não vem de nenhuma cor (seis sondas). O usuário decidiu deixar como está em 2026-11-24. Caminho, se um dia voltar: registrar as chamadas `SpriteBatch.Draw` dentro de `SelectionPanel.RenderToTexture`, achar a do degradê e pular ou recolorir essa chamada.
 - Painel do sistema embaixo ao centro e elementos do mapa (moldura de seleção, ícones, barra de população) não seguem o tema.
 
 ## Próximos passos
@@ -65,6 +64,7 @@ Atualizado em 2026-11-25.
 
 - [x] Divisórias de cima e de baixo à direita e contorno das sub-abas com chaves próprias (`Overrides`, `Outlines`), nos temas e no editor.
 - [x] `borders.flag` para mapear bordas.
+- [x] Degradê lateral da janela do objeto selecionado: textura pintada de branco fixo, agora com o `OverlayTintColor` do tema. Era a última limitação aceita da janela. (2026-11-25)
 - [x] Postfix do `SetColorScheme` com `Priority.Last` (conflito com o Settings Keeper).
 - [x] Conferido no jogo: divisórias, contorno e troca de temas pelo atalho com o Settings Keeper sem perder cores. (2026-11-25)
 - [ ] Editor no GitHub Pages, formulário de issue para temas e botão "Share on GitHub" no editor (proposto 2026-11-25).
@@ -81,6 +81,6 @@ Atualizado em 2026-11-25.
 - **2026-11-24:** sem "esquema base" nos temas. O tema vai por cima do esquema escolhido e define os 24 campos do esquema, para ficar igual com qualquer escolha e preservar o Colorblind.
 - **2026-11-24:** atalhos com `Ctrl+Alt` e `+`, `-`, `0`, porque o jogo ignora modificadores nas F-keys.
 - **2026-11-24:** cores personalizadas pelo editor HTML, em vez de sliders no launcher (o launcher não tem seletor de cor).
-- **2026-11-24:** degradê lateral da janela do objeto selecionado fica como está.
+- **2026-11-24:** degradê lateral da janela do objeto selecionado fica como está. (Revisto em 2026-11-25: resolvido com o levantamento de bordas.)
 - **2026-11-25:** Basalt é o tema padrão do launcher e do `options.json`.
 - **2026-11-25:** `author` do `dw2modlauncher.json` fica `xupisco`, igual ao nome de autor nas configurações do launcher (que reescreve o campo a cada publicação).

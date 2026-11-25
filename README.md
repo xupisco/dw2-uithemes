@@ -99,7 +99,7 @@ What each field paints is in the [screen map in FINDINGS.md](FINDINGS.md#mapa-da
 | `Themes.cs` | Loads themes, applies them after each `SetColorScheme`, restores extra fields, shortcuts, on-screen message, tooltip background and `opaqueTooltips` |
 | `LiveRefresh.cs` | Keeps the color history and, in the `...Resolved` properties of `DWButton` and `DWControl`, swaps old copies for the current colors (theme switch with the game running) |
 | `Overrides.cs` | Controls' own colors (`SelectionPanel.*`) via postfix on the `...Resolved` properties; logs the game's values |
-| `Outlines.cs` | `SectionHeaderPanel.OutlineColor`: swaps the accent in the sub-tab outline while that panel draws itself |
+| `Outlines.cs` | Recolors single drawing calls while one panel draws itself: the sub-tab outline (`SectionHeaderPanel.OutlineColor`) and the side gradient of the selected object window (`OverlayTintColor`) |
 | `Diagnostics.cs` | Dumps, test colors and flags |
 | `BorderSurvey.cs` | `borders.flag`: records what draws borders and in which color |
 | `Log.cs` | File log |
