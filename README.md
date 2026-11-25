@@ -1,105 +1,105 @@
 # DW2 UI Themes
 
-Mod para Distant Worlds 2 que troca as cores da interface por temas. Os temas são arquivos JSON simples, e o editor visual em `tools\` gera esses arquivos.
+A Distant Worlds 2 mod that recolors the game's interface with themes. Themes are plain JSON files, and the visual editor in `tools\` creates them.
 
-- Achados sobre o jogo e o mapa de cores: [FINDINGS.md](FINDINGS.md)
-- Status e próximos passos: [PLAN.md](PLAN.md)
+- Findings about the game and the color map: [FINDINGS.md](FINDINGS.md) (development notes, in Portuguese)
+- Status and next steps: [PLAN.md](PLAN.md) (in Portuguese)
 
-## Instalar (desenvolvimento)
+## Install (development)
 
-Requisitos: .NET SDK (8 ou mais novo) e o jogo instalado.
+Requirements: .NET SDK (8 or newer) and the game installed.
 
 ```powershell
 .\install.ps1
 ```
 
-O script:
-1. compila `UIThemes\` em Release;
-2. copia a DLL, o `mod.json`, o `settings.schema.json`, o `dw2modlauncher.json`, o `changelog.txt`, o `description.bbcode`, o `preview.jpg`, o `theme-editor.html` e a pasta `themes\` para `<jogo>\mods\DW2UIThemes\`;
-3. adiciona `mods/DW2UIThemes` ao `mods.json` e ao `mods.<perfil>.json` do launcher, com backup `*.uithemes_backup`.
+The script:
+1. builds `UIThemes\` in Release;
+2. copies the DLL, `mod.json`, `settings.schema.json`, `dw2modlauncher.json`, `changelog.txt`, `description.bbcode`, `preview.jpg`, `theme-editor.html` and the `themes\` folder to `<game>\mods\DW2UIThemes\`;
+3. adds `mods/DW2UIThemes` to `mods.json` and to the launcher's `mods.<profile>.json`, keeping a `*.uithemes_backup` copy.
 
-Opções:
-- `-NoRegister`: só copia, sem mexer nas listas de mods.
-- `-GameDir "..."`: outra pasta do jogo.
+Options:
+- `-NoRegister`: copy only, without touching the mod lists.
+- `-GameDir "..."`: another game folder.
 
-Com o jogo aberto a DLL fica bloqueada: feche o jogo para instalar uma DLL nova. Os JSON de tema podem ser copiados para `<jogo>\mods\DW2UIThemes\themes\` a qualquer momento.
+While the game is running the DLL is locked: close the game to install a new DLL. Theme JSON files can be copied to `<game>\mods\DW2UIThemes\themes\` at any time.
 
-## Usar
+## Use
 
-- **Escolher o tema:** no DW2 Mod Launcher, opção **UI theme** (Off, Amethyst, Basalt, Graphite, Obsidian, Synthwave; padrão Basalt). Sem o launcher, use `options.json` na pasta do mod: `{"Theme": "Basalt"}`. O tema vale desde a abertura do jogo.
-- **Com o jogo aberto:**
+- **Pick the theme:** in the DW2 Mod Launcher, **UI theme** option (Off, Amethyst, Basalt, Graphite, Obsidian, Synthwave; Basalt by default). Without the launcher, use `options.json` in the mod's folder: `{"Theme": "Basalt"}`. The theme applies from the moment the game starts.
+- **In game:**
 
-  | Atalho | Ação |
+  | Shortcut | Action |
   |---|---|
-  | `Ctrl+Alt++` | próximo tema (Off incluído); o nome aparece na tela |
-  | `Ctrl+Alt+-` | tema anterior |
-  | `Ctrl+Alt+0` | mostra o tema atual |
+  | `Ctrl+Alt++` | next theme (Off included); the name shows on screen |
+  | `Ctrl+Alt+-` | previous theme |
+  | `Ctrl+Alt+0` | shows the current theme |
 
-  A troca pelo atalho vale só para a sessão. A pasta `themes\` é relida a cada troca, então um JSON editado aparece trocando de tema e voltando.
-- **O tema e o esquema do jogo:** o tema é aplicado por cima do esquema de cor escolhido nas opções do jogo. Se você usa Colorblind Assist, as cores de aviso e status dele continuam valendo.
-- **Log:** `<jogo>\data\Logs\DW2UIThemes\DW2UIThemes.log`.
+  A theme switched with the shortcut lasts for the session only. The `themes\` folder is read again on every switch, so an edited JSON shows up by switching away and back.
+- **Themes and the game's scheme:** the theme goes on top of the color scheme chosen in the game's options. With Colorblind Assist, its warning and status colors stay in place.
+- **Log:** `<game>\data\Logs\DW2UIThemes\DW2UIThemes.log`.
 
-## Criar um tema
+## Make a theme
 
-O caminho mais fácil é o editor:
+The easiest way is the editor:
 
-1. Abra `tools\theme-editor.html` no navegador (funciona offline).
-2. Escolha um ponto de partida, ajuste as cores olhando o mockup e clique em **Copy JSON** (a interface do editor é em inglês, porque ele vai no pacote para os jogadores).
-3. Salve como `UIThemes\themes\<nome>.json` e adicione o nome em `options` no `UIThemes\settings.schema.json`.
-4. Rode `.\tools\build-editor.ps1` para o editor incluir o tema novo como preset.
+1. Open `tools\theme-editor.html` in a browser (it works offline).
+2. Pick a starting point, adjust the colors on the mockup and click **Copy JSON**.
+3. Save it as `UIThemes\themes\<name>.json` and add the name to `options` in `UIThemes\settings.schema.json`.
+4. Run `.\tools\build-editor.ps1` so the editor includes the new theme as a preset.
 
-### Formato
+### Format
 
 ```jsonc
 {
-  "name": "Basalt",          // nome mostrado no jogo e usado no launcher
-  "opaqueTooltips": true,    // opcional: tooltips sem a transparência do painel
+  "name": "Basalt",          // name shown in game and used in the launcher
+  "opaqueTooltips": true,    // optional: tooltips without the panel's transparency
   "colors": {
-    "AccentColor": "#5076B4",                                      // campo do ColorHelper
-    "BackColorLightTransparent": "#121212F0",                      // com alpha
-    "UserInterfaceController.HoverTipBackColorDefault": "#141414FF", // estático de outra classe
-    "SelectionPanel.HotspotBackColor": "#141414FF"                 // cor própria de um controle
+    "AccentColor": "#5076B4",                                      // ColorHelper field
+    "BackColorLightTransparent": "#121212F0",                      // with alpha
+    "UserInterfaceController.HoverTipBackColorDefault": "#141414FF", // static field of another class
+    "SelectionPanel.HotspotBackColor": "#141414FF"                 // a control's own color
   }
 }
 ```
 
-- **Cores:** `#RRGGBB` mantém a transparência original do campo, e `#RRGGBBAA` define a transparência também. Comentários `//` e vírgula sobrando no fim são aceitos.
-- **Chaves aceitas:**
-  - qualquer campo `Color` do `DistantWorlds.Types.ColorHelper`, pelo nome (lista nos dumps em `reference\`);
-  - `UserInterfaceController.<campo>` e `EmpireMessage.<campo>` (cores estáticas);
-  - `SelectionPanel.<cor>`, onde a cor é `SectionBackColor`, `HotspotBackColor`, `HighlightColor`, `GraphBackColor`, `BackColor`, `ShadowColor`, `DarkColor`, `BorderColor` ou `ForeColor`.
-- **Tons do destaque:** se `AccentColorMid`, `AccentColorDark`, `AccentColorMidDark` e `AccentColorVeryDark` não estiverem no tema, o mod calcula a partir do `AccentColor` (× 0,7, × 0,5, × 0,25, × 0,125), como o jogo faz.
-- **Campos do esquema:** defina os 24 campos que os esquemas do jogo mudam (o editor sempre inclui), para o tema ficar igual com qualquer esquema. O log avisa quais faltam.
-- Chaves desconhecidas e cores inválidas geram um aviso no log, uma vez por arquivo.
+- **Colors:** `#RRGGBB` keeps the field's original transparency, and `#RRGGBBAA` sets the transparency too. `//` comments and trailing commas are accepted.
+- **Accepted keys:**
+  - any `Color` field of `DistantWorlds.Types.ColorHelper`, by name (listed in the dumps in `reference\`);
+  - `UserInterfaceController.<field>` and `EmpireMessage.<field>` (static colors);
+  - `SelectionPanel.<color>`, where the color is `SectionBackColor`, `HotspotBackColor`, `HighlightColor`, `GraphBackColor`, `BackColor`, `ShadowColor`, `DarkColor`, `BorderColor` or `ForeColor`.
+- **Accent shades:** if `AccentColorMid`, `AccentColorDark`, `AccentColorMidDark` and `AccentColorVeryDark` are missing, the mod derives them from `AccentColor` (× 0.7, × 0.5, × 0.25, × 0.125), as the game does.
+- **Scheme fields:** set the 24 fields the game's schemes change (the editor always includes them), so the theme looks the same with any scheme. The log lists the missing ones.
+- Unknown keys and invalid colors log a warning, once per file.
 
-O que cada campo pinta está no [mapa da tela, em FINDINGS.md](FINDINGS.md#mapa-da-tela-elemento--cor).
+What each field paints is in the [screen map in FINDINGS.md](FINDINGS.md#mapa-da-tela-elemento--cor).
 
-## Ferramentas de desenvolvimento
+## Development tools
 
-- **Sondas:** `UIThemes\probes\*.json` pintam campos suspeitos com cores fortes, para descobrir o que cada um pinta. Para usar, copie para a pasta `themes\` do jogo. Elas não vão no pacote.
-- **Flags:** na pasta do log, criar `toggle.flag` liga ou desliga cores de teste fortes, e `dump.flag` grava todas as cores atuais em `current-*.json`. O mod confere a cada segundo.
-- **Dumps por esquema:** a opção oculta `DumpColors` grava `scheme-<n>.json` a cada troca de esquema.
-- **Referência:** `reference\scheme-<n>-<nome>.json` são os 7 esquemas do jogo, gravados em jogo.
-- **Imagem da Workshop:** `.\tools\build-thumbnail.ps1` renderiza `tools\thumbnail.html` com o Edge sem janela e grava `UIThemes\preview.jpg` (2560×1440). As cores dos temas estão copiadas no HTML: ao mudar um tema, atualize a lista `THEMES` lá.
-- **Capturas da Workshop:** salve as capturas do jogo como `ss_<tema>.png` na raiz (mesma cena em todas) e rode `.\tools\build-screenshots.ps1`. Ele grava em `workshop\` um JPG de cada captura e o `compare.jpg`, com o painel da esquerda dos temas lado a lado (área ajustável com `-Crop x,y,largura,altura`). A pasta `workshop\` não vai no pacote.
-- **Release no GitHub:** `.\tools\build-release.ps1` compila e grava em `release\` os arquivos que o launcher lê (mesmo formato do Refreshed): `DW2UIThemes-v<versão>.zip` (pasta `DW2UIThemes/` dentro), `.zip.sha256`, `.manifest.json` e `.preview.jpg`. Depois:
+- **Probes:** `UIThemes\probes\*.json` paint suspect fields with loud colors, to find out what each one paints. To use them, copy them to the game's `themes\` folder. They are not in the package.
+- **Flags:** in the log folder, creating `toggle.flag` turns loud test colors on or off, and `dump.flag` writes every current color to `current-*.json`. The mod checks once per second.
+- **Per-scheme dumps:** the hidden `DumpColors` option writes `scheme-<n>.json` on every scheme change.
+- **Reference:** `reference\scheme-<n>-<name>.json` are the game's 7 schemes, recorded in game.
+- **Workshop image:** `.\tools\build-thumbnail.ps1` renders `tools\thumbnail.html` with headless Edge and writes `UIThemes\preview.jpg` (2560×1440). The theme colors are copied into the HTML: when a theme changes, update the `THEMES` list there.
+- **Workshop screenshots:** save the in-game captures as `ss_<theme>.png` in the root (same scene in all of them) and run `.\tools\build-screenshots.ps1`. It writes a JPG of each capture to `workshop\`, plus `compare.jpg` with the left panel of each theme side by side (area set with `-Crop x,y,width,height`). The `workshop\` folder is not in the package.
+- **GitHub release:** `.\tools\build-release.ps1` builds and writes to `release\` the files the launcher reads (same layout as the Refreshed mods): `DW2UIThemes-v<version>.zip` (with the `DW2UIThemes/` folder inside), `.zip.sha256`, `.manifest.json` and `.preview.jpg`. Then:
   ```powershell
-  gh release create DW2UIThemes-v<versão> release\DW2UIThemes-v<versão>.* --target master --title "UI Themes <versão>" --notes-file <notas>
+  gh release create DW2UIThemes-v<version> release\DW2UIThemes-v<version>.* --target master --title "UI Themes <version>" --notes-file <notes>
   ```
-  Antes, suba a versão no `UIThemes.csproj` e no `mod.json` e escreva a entrada no `changelog.txt`. Quando o mod tiver `workshopId` no `mod.json`, o manifesto inclui o id.
+  First bump the version in `UIThemes.csproj` and `mod.json` and write the `changelog.txt` entry. Once `mod.json` has a `workshopId`, the manifest includes it.
 
-## Código (`UIThemes\src\`)
+## Code (`UIThemes\src\`)
 
-| Arquivo | Papel |
+| File | Role |
 |---|---|
-| `Entry.cs` | Entradas do mod (`Mod` para o loader do jogo, `Entry` para o launcher), leitura das opções e instalação dos patches |
-| `Themes.cs` | Carrega os temas, aplica depois de cada `SetColorScheme`, restaura campos extras, atalhos, mensagem na tela, fundo dos tooltips e `opaqueTooltips` |
-| `LiveRefresh.cs` | Guarda o histórico das cores e troca, nas propriedades `...Resolved` de `DWButton` e `DWControl`, as cópias antigas pelas cores atuais (troca de tema com o jogo aberto) |
-| `Overrides.cs` | Cores próprias de controles (`SelectionPanel.*`) via postfix nas propriedades `...Resolved`; registra os valores do jogo no log |
-| `Diagnostics.cs` | Dumps, cores de teste e flags |
-| `Log.cs` | Log em arquivo |
+| `Entry.cs` | Mod entry points (`Mod` for the game's loader, `Entry` for the launcher), reading options and installing the patches |
+| `Themes.cs` | Loads themes, applies them after each `SetColorScheme`, restores extra fields, shortcuts, on-screen message, tooltip background and `opaqueTooltips` |
+| `LiveRefresh.cs` | Keeps the color history and, in the `...Resolved` properties of `DWButton` and `DWControl`, swaps old copies for the current colors (theme switch with the game running) |
+| `Overrides.cs` | Controls' own colors (`SelectionPanel.*`) via postfix on the `...Resolved` properties; logs the game's values |
+| `Diagnostics.cs` | Dumps, test colors and flags |
+| `Log.cs` | File log |
 
-Os patches são instalados por recurso, cada um com seu id de Harmony. Se um falhar, os outros continuam funcionando, e a falha vai para o log.
+Patches are installed per feature, each with its own Harmony id. If one fails, the others keep working, and the failure goes to the log.
 
 ## Credits
 
