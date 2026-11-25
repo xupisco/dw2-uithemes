@@ -74,3 +74,4 @@ Atualizado em 2026-11-25.
 - **2026-11-24:** cores personalizadas pelo editor HTML, em vez de sliders no launcher (o launcher não tem seletor de cor).
 - **2026-11-24:** degradê lateral da janela do objeto selecionado fica como está.
 - **2026-11-25:** Basalt é o tema padrão do launcher e do `options.json`.
+- **2026-11-25:** `author` do `dw2modlauncher.json` fica `xupisco`, igual ao nome de autor nas configurações do launcher (que reescreve o campo a cada publicação).
