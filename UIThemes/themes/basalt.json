@@ -45,11 +45,8 @@
     "BorderColor": "#333333FF",
     "FaintBorderColor": "#2A2A2A80",
     "OverlayTintColor": "#00000000",
-    // Dividers between the top-left section tabs, the top-right game buttons and the bottom-right map buttons
-    // (game: light gray), and the outline around a section's sub-tabs (game: AccentColor).
-    "EmpireSectionList.ForeColor": "#3A3A3AFF",
-    "AngledButtonStrip.ForeColor": "#3A3A3AFF",
-    "MapOverlayButtons.DarkColor": "#3A3A3AFF",
-    "SectionHeaderPanel.OutlineColor": "#3A3A3AFF"
+    // Every other border and divider (section tab, game button and map button dividers, the sub-tab outline,
+    // the line under a panel title, the frame of boxed tables): one quiet gray. BorderColor above stays darker.
+    "Borders": "#3A3A3AFF"
   }
 }

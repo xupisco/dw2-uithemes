@@ -307,6 +307,7 @@ const GROUPS = [
     ["HoverInfoBorderColor", "Info box border"],
   ]],
   ["Borders and effects", [
+    ["Borders", "All borders and dividers at once: every border row marked \"auto\" takes this color and opacity (not a game color: the mod fills in the others)"],
     ["BorderColor", "Panel and button border"],
     ["FaintBorderColor", "Table lines"],
     ["OverlayTintColor", "Gradient on the sides of panels (alpha 0 = no gradient)"],
@@ -314,6 +315,8 @@ const GROUPS = [
     ["AngledButtonStrip.ForeColor", "Dividers between the game buttons at the top right (game: copy of ButtonColorText)"],
     ["MapOverlayButtons.DarkColor", "Dividers between the map buttons at the bottom right"],
     ["SectionHeaderPanel.OutlineColor", "Outline around a section's sub-tabs, e.g. Exploration (game: AccentColor)"],
+    ["SectionHeaderPanel.TitleLineColor", "Line under a section panel's title, e.g. RESOURCES (game: ForeColorDark)"],
+    ["TableFrameColor", "Frame and grid of boxed tables: the summary under a section title, the boxes in the empire relation window (game: fixed light gray at 40%)"],
   ]],
 ];
 
@@ -323,6 +326,13 @@ const SCHEME_FIELDS = ["DialogBackColor","MainViewHeaderBackColor","BackColorLig
   "ButtonColorText","ButtonColorTextHover","ButtonColorTextDisabled","ButtonColorDropDownSelector","ButtonColorDropDownSelectorHover",
   "PopupListCurrentItemColor","PopupListCurrentItemTextColor","PopupListHighlightColor"];
 const SHADES = { AccentColorMid: 0.7, AccentColorDark: 0.5, AccentColorMidDark: 0.25, AccentColorVeryDark: 0.125 };
+// Filled in by the mod from "Borders" when a theme leaves them out (Themes.BorderKeys).
+const BORDERS = ["BorderColor", "PopupListBorderColor", "HoverInfoBorderColor", "EmpireSectionList.ForeColor",
+  "AngledButtonStrip.ForeColor", "MapOverlayButtons.DarkColor", "SectionHeaderPanel.OutlineColor",
+  "SectionHeaderPanel.TitleLineColor", "TableFrameColor"];
+const canAuto = f => f in SHADES || BORDERS.includes(f);
+// A shade is auto unless the preset sets it; a border is auto when the preset uses "Borders" and leaves it out.
+const autoIn = (f, preset) => f in SHADES ? !(f in preset) : ("Borders" in preset && !(f in preset));
 const FIELDS = GROUPS.flatMap(g => g[1].map(f => f[0]));
 const STORE_KEY = "dw2-theme-editor-v1";
 const ECLIPSE = "Eclipse (game)";   // the game's default scheme, no theme
@@ -351,16 +361,17 @@ function load(name) {
   for (const f of FIELDS) {
     const src = preset[f] ?? BASE[f] ?? "#000000FF";
     state[f] = toHex(parse(src, baseAlpha(f)) || { r: 0, g: 0, b: 0, a: 255 });
-    if (f in SHADES) auto[f] = !(f in preset);
+    if (canAuto(f)) auto[f] = autoIn(f, preset);
   }
   render();
 }
 
 function derived(f) {
+  if (BORDERS.includes(f)) return state.Borders;
   const a = parse(state.AccentColor), k = SHADES[f], own = parse(state[f]);
   return toHex({ r: a.r * k, g: a.g * k, b: a.b * k, a: own ? own.a : 255 });
 }
-const value = f => (f in SHADES && auto[f]) ? derived(f) : state[f];
+const value = f => (canAuto(f) && auto[f]) ? derived(f) : state[f];
 
 function buildControls() {
   const root = document.getElementById("controls");
@@ -372,7 +383,8 @@ function buildControls() {
     for (const [f, hint] of fields) {
       const row = document.createElement("div");
       row.className = "row"; row.dataset.field = f;
-      const autoBox = f in SHADES ? `<label class="auto"><input type="checkbox" class="autochk"> auto (× ${SHADES[f]})</label>` : "";
+      const autoText = f in SHADES ? `auto (× ${SHADES[f]})` : "auto (= Borders)";
+      const autoBox = canAuto(f) ? `<label class="auto"><input type="checkbox" class="autochk"> ${autoText}</label>` : "";
       row.innerHTML = `<div class="name">${f}</div>
         <div class="edit">${autoBox}<input type="color" aria-label="${f}"><input type="range" min="0" max="255" title="transparency (alpha)" aria-label="alpha of ${f}">
         <input type="text" class="hex" aria-label="hex of ${f}"><button class="reset" title="back to the preset">↺</button></div>
@@ -383,7 +395,7 @@ function buildControls() {
       range.addEventListener("input", () => { const c = parse(value(f)); c.a = +range.value; set(f, toHex(c)); });
       hex.addEventListener("change", () => { const c = parse(hex.value, parse(value(f)).a); if (c) set(f, toHex(c)); else syncRow(f); });
       reset.addEventListener("click", () => { const p = presetName === ECLIPSE ? {} : PRESETS[presetName] || {};
-        state[f] = toHex(parse(p[f] ?? BASE[f], baseAlpha(f))); if (f in SHADES) auto[f] = !(f in p); render(); });
+        state[f] = toHex(parse(p[f] ?? BASE[f], baseAlpha(f))); if (canAuto(f)) auto[f] = autoIn(f, p); render(); });
       if (chk) chk.addEventListener("change", () => { if (!chk.checked) state[f] = derived(f); auto[f] = chk.checked; render(); });
       d.appendChild(row);
     }
@@ -391,7 +403,7 @@ function buildControls() {
   }
 }
 
-function set(f, hex) { if (f in SHADES) auto[f] = false; state[f] = hex; render(); }
+function set(f, hex) { if (canAuto(f)) auto[f] = false; state[f] = hex; render(); }
 
 function syncRow(f) {
   const row = document.querySelector(`.row[data-field="${CSS.escape(f)}"]`);
@@ -428,10 +440,11 @@ function themeJson() {
   const only = document.getElementById("onlyChanged").checked;
   const colors = {};
   for (const f of FIELDS) {
-    if (f in SHADES && auto[f]) continue; // the mod derives it from AccentColor
+    if (canAuto(f) && auto[f]) continue; // the mod derives it from AccentColor or Borders
     const v = toHex(parse(value(f)));
     const isBase = v === toHex(parse(BASE[f], baseAlpha(f)));
-    if (!only || !isBase || SCHEME_FIELDS.includes(f)) colors[f] = v;
+    const needed = SCHEME_FIELDS.includes(f) || (f === "Borders" && BORDERS.some(b => auto[b]));
+    if (!only || !isBase || needed) colors[f] = v;
   }
   const theme = { name: document.getElementById("themeName").value.trim() || DEFAULT_NAME };
   if (document.getElementById("opaqueTooltips").checked) theme.opaqueTooltips = true;
@@ -459,6 +472,7 @@ function importJson() {
       const c = parse(hex, baseAlpha(f));
       if (c) { state[f] = toHex(c); if (f in SHADES) auto[f] = false; }
     }
+    for (const b of BORDERS) auto[b] = autoIn(b, colors);
     if (j.name) document.getElementById("themeName").value = j.name;
     document.getElementById("opaqueTooltips").checked = !!j.opaqueTooltips;
     render(); toast("JSON loaded");

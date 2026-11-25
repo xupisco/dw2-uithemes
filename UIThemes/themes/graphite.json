@@ -33,16 +33,12 @@
     "ButtonColor": "#2A3038",
     "ButtonColorHover": "#3A424D",
     "ButtonColorBright": "#5B6573",
-    "BorderColor": "#8C97A6",
+    // Every border and divider the theme leaves out below (panel border, dividers, sub-tab outline, line
+    // under a panel title, frame of boxed tables) uses this.
+    "Borders": "#8C97A6",
     "PopupListBackColor": "#1E232AFA",
     "PopupListBorderColor": "#3A424D",
     "HoverInfoBackColor": "#12161CF2",
-    "HoverInfoBorderColor": "#3A424D",
-    // Dividers between the top-left section tabs, the top-right game buttons and the bottom-right map buttons,
-    // and the outline around a section's sub-tabs: the theme's border color.
-    "EmpireSectionList.ForeColor": "#8C97A6",
-    "AngledButtonStrip.ForeColor": "#8C97A6",
-    "MapOverlayButtons.DarkColor": "#8C97A6",
-    "SectionHeaderPanel.OutlineColor": "#8C97A6"
+    "HoverInfoBorderColor": "#3A424D"
   }
 }

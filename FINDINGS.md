@@ -163,7 +163,8 @@ Há quatro fontes, e cada uma se comporta de um jeito ao trocar o tema com o jog
 | Divisórias dos botões do jogo (topo direito: Galactopedia, Menu, Vitória, Tela limpa) | `AngledButtonStrip.ForeColor`, mesmas texturas | cópia de `ButtonColorText` | confirmado |
 | Divisórias dos botões do mapa (baixo direito) | `MapOverlayButtons.DarkColor`, mesmas texturas | cópia fixa `#606060` | confirmado (levantamento) |
 | Contorno das sub-abas de uma seção (Exploration, Military…) | `AccentColor` lido na hora, linhas e preenchimentos de 1×1 desenhados pela `SectionHeaderPanel`; a borda das próprias abas é `#161616E5` (cópia de `HoverInfoBorderColor`) | ColorHelper | confirmado (`ButtonColorToggleHover` deslocado não mudou o contorno). O mod troca com `SectionHeaderPanel.OutlineColor` |
-| Moldura do cabeçalho de seção | `#C0C0C060` fixo | — | medido |
+| Linha embaixo do título de um painel de seção (RESOURCES…) | `ForeColorDark` lido na hora, linhas de 1×1 desenhadas pela `SectionHeaderPanel` (4 `DrawLine` e 1 preenchimento por quadro) | ColorHelper | levantamento (2026-11-25). O mod troca com `SectionHeaderPanel.TitleLineColor` |
+| Moldura e grade das tabelas em caixa (resumo embaixo do título de seção, caixas da janela de relação com império) | `#C0C0C0` fixo a 40% (sai `#C0C0C060` com o fade): `DrawBorder` com texturas 2×44, 44×44 e 44×596, mais linhas e preenchimentos de 1×1. Desenhada pela `SectionHeaderPanel` e pelo `ScrollablePanel` da `EmpireRelationPanel`, então é um helper comum | fixo | levantamento (2026-11-25). O mod troca com `TableFrameColor`, em qualquer lugar: só peças nessa cor, com alfa até 40% e nessas texturas |
 | Painel do sistema embaixo ao centro | desconhecido | — | não segue os testes |
 | Moldura de seleção, ícone "A", barra de 63% no mapa | não são cores da UI | — | não segue os testes |
 

@@ -1,5 +1,15 @@
 UI Themes - changelog
 
+0.5.0 (2026-11-25)
+- The line under a section panel's title (RESOURCES...) follows the theme:
+  SectionHeaderPanel.TitleLineColor (it stayed light gray).
+- The frame and grid of boxed tables (the summary under a section title, the
+  boxes in the empire relation window) follow the theme: TableFrameColor (the
+  game draws them in a fixed light gray).
+- Borders: one theme key for every border and divider. Each border key the
+  theme leaves out takes this color, opacity included; the editor marks those
+  rows "auto (= Borders)". The included themes now use it.
+
 0.4.0 (2026-11-25)
 - Dividers between the top-left section tabs, the top-right game buttons and the
   bottom-right map buttons now follow the theme (they stayed light gray).

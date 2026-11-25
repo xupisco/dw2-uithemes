@@ -45,6 +45,19 @@ internal static class Themes
     };
 
     /// <summary>
+    /// "Borders" is a shortcut for theme makers: every border and divider below that the theme leaves out
+    /// takes this color (its alpha included), so one key sets them all and the others only override.
+    /// </summary>
+    public const string BordersKey = "Borders";
+
+    public static readonly string[] BorderKeys =
+    {
+        "BorderColor", "PopupListBorderColor", "HoverInfoBorderColor",
+        "EmpireSectionList.ForeColor", "AngledButtonStrip.ForeColor", "MapOverlayButtons.DarkColor",
+        Outlines.Key, Outlines.TitleLineKey, Outlines.FrameKey,
+    };
+
+    /// <summary>
     /// Static colors outside ColorHelper, written as "Class.Field" in a theme,
     /// e.g. "UserInterfaceController.HoverTipBackColorDefault" (tooltip background).
     /// </summary>
@@ -351,7 +364,8 @@ internal static class Themes
             foreach (var prop in colors.EnumerateObject())
             {
                 string hex = prop.Value.ValueKind == JsonValueKind.String ? prop.Value.GetString() : null;
-                if (!Fields.ContainsKey(prop.Name) && !Overrides.IsKnown(prop.Name) && !Outlines.IsKnown(prop.Name))
+                if (!Fields.ContainsKey(prop.Name) && !Overrides.IsKnown(prop.Name) && !Outlines.IsKnown(prop.Name)
+                    && prop.Name != BordersKey)
                 {
                     WarnOnce($"{theme.File}: unknown color \"{prop.Name}\" ignored.");
                 }
@@ -363,6 +377,13 @@ internal static class Themes
                 {
                     theme.Colors[prop.Name] = hex;
                 }
+            }
+        }
+        if (theme.Colors.TryGetValue(BordersKey, out var borders))
+        {
+            foreach (var key in BorderKeys)
+            {
+                theme.Colors.TryAdd(key, borders);
             }
         }
         var missing = SchemeFields.Where(f => !theme.Colors.ContainsKey(f) && !AccentShades.Any(s => s.Field == f && theme.Colors.ContainsKey("AccentColor"))).ToList();

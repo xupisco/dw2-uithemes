@@ -71,7 +71,11 @@ The easiest way is the editor, online at **https://xupisco.github.io/dw2-uitheme
   - `UserInterfaceController.<field>` and `EmpireMessage.<field>` (static colors);
   - `SelectionPanel.<color>`, where the color is `SectionBackColor`, `HotspotBackColor`, `HighlightColor`, `GraphBackColor`, `BackColor`, `ShadowColor`, `DarkColor`, `BorderColor` or `ForeColor`;
   - dividers in the button strips, which the game draws with a color copied when the strip is created: `EmpireSectionList.ForeColor` (top-left section tabs), `AngledButtonStrip.ForeColor` (top-right game buttons), `MapOverlayButtons.DarkColor` (bottom-right map buttons);
-  - `SectionHeaderPanel.OutlineColor`: the outline around a section's sub-tabs (Exploration, Military...), which the game draws with `AccentColor`.
+  - `SectionHeaderPanel.OutlineColor`: the outline around a section's sub-tabs (Exploration, Military...), which the game draws with `AccentColor`;
+  - `SectionHeaderPanel.TitleLineColor`: the line under a section panel's title (RESOURCES...), which the game draws with `ForeColorDark`;
+  - `TableFrameColor`: the frame and grid of boxed tables (the summary under a section title, the boxes in the empire relation window), a fixed light gray at 40% in the game;
+  - `Borders`: one color for all borders and dividers (see below).
+- **Borders:** `Borders` fills in every border key the theme leaves out: `BorderColor`, `PopupListBorderColor`, `HoverInfoBorderColor`, the three dividers, `SectionHeaderPanel.OutlineColor`, `SectionHeaderPanel.TitleLineColor` and `TableFrameColor`. Its alpha is the opacity of all of them. Set `Borders` once and add only the keys that should differ. In the editor these rows have an "auto (= Borders)" box.
 - **Accent shades:** if `AccentColorMid`, `AccentColorDark`, `AccentColorMidDark` and `AccentColorVeryDark` are missing, the mod derives them from `AccentColor` (× 0.7, × 0.5, × 0.25, × 0.125), as the game does.
 - **Scheme fields:** set the 24 fields the game's schemes change (the editor always includes them), so the theme looks the same with any scheme. The log lists the missing ones.
 - Unknown keys and invalid colors log a warning, once per file.
@@ -101,7 +105,7 @@ What each field paints is in the [screen map in FINDINGS.md](FINDINGS.md#mapa-da
 | `Themes.cs` | Loads themes, applies them after each `SetColorScheme`, restores extra fields, shortcuts, on-screen message, tooltip background and `opaqueTooltips` |
 | `LiveRefresh.cs` | Keeps the color history and, in the `...Resolved` properties of `DWButton` and `DWControl`, swaps old copies for the current colors (theme switch with the game running) |
 | `Overrides.cs` | Controls' own colors (`SelectionPanel.*`) via postfix on the `...Resolved` properties; logs the game's values |
-| `Outlines.cs` | Recolors single drawing calls while one panel draws itself: the sub-tab outline (`SectionHeaderPanel.OutlineColor`) and the side gradient of the selected object window (`OverlayTintColor`) |
+| `Outlines.cs` | Recolors single drawing calls: while one panel draws itself, the sub-tab outline (`SectionHeaderPanel.OutlineColor`), the line under the title (`SectionHeaderPanel.TitleLineColor`) and the side gradient of the selected object window (`OverlayTintColor`); everywhere, the boxed tables' frame (`TableFrameColor`) |
 | `Diagnostics.cs` | Dumps, test colors and flags |
 | `BorderSurvey.cs` | `borders.flag`: records what draws borders and in which color |
 | `Log.cs` | File log |

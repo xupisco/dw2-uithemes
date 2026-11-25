@@ -8,6 +8,6 @@
   "descriptionFile": "description.bbcode",
   "shortDescription": "Color themes for the game\u0027s interface: panels, buttons, tabs, lists and tooltips. Five themes included, plus an editor to make your own.",
   "previewImage": "preview.jpg",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "bundles": []
 }

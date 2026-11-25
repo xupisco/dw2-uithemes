@@ -29,13 +29,12 @@
     "PopupListHighlightColor": "#200C30",
 
     // Beyond the game's schemes.
-    "BorderColor": "#7A5FD0",
+    // Every border and divider the theme leaves out below (panel border, dividers, line under a panel title,
+    // frame of boxed tables) uses this.
+    "Borders": "#7A5FD0",
     "PopupListBorderColor": "#4A2A80",
     "HoverInfoBorderColor": "#4A2A80",
-    // Dividers between the top-left section tabs, the top-right game buttons and the bottom-right map buttons
-    // (game: a copy of the button text color, cyan here). The sub-tab outline keeps the pink accent.
-    "EmpireSectionList.ForeColor": "#7A5FD0",
-    "AngledButtonStrip.ForeColor": "#7A5FD0",
-    "MapOverlayButtons.DarkColor": "#7A5FD0"
+    // The outline around a section's sub-tabs keeps the pink accent (game: AccentColor).
+    "SectionHeaderPanel.OutlineColor": "#FF4FB8"
   }
 }

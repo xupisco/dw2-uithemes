@@ -20,6 +20,11 @@ $base['EmpireSectionList.ForeColor'] = $base['ButtonColorText']
 $base['AngledButtonStrip.ForeColor'] = $base['ButtonColorText']
 $base['MapOverlayButtons.DarkColor'] = '#606060FF'
 $base['SectionHeaderPanel.OutlineColor'] = $base['AccentColor']
+# The line under a section panel's title (ForeColorDark) and the boxed tables' frame (fixed #C0C0C0 at 40%).
+$base['SectionHeaderPanel.TitleLineColor'] = $base['ForeColorDark']
+$base['TableFrameColor'] = '#C0C0C066'
+# "Borders" is the mod's shortcut for all of the border keys; it has no game value of its own.
+$base['Borders'] = $base['BorderColor']
 
 $presets = [ordered]@{}
 Get-ChildItem "$root\UIThemes\themes\*.json" | Sort-Object Name | ForEach-Object {

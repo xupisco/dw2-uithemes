@@ -71,6 +71,14 @@ Atualizado em 2026-11-25.
 - [x] Descrição da Workshop com o link do editor online (subiu na 0.4.0).
 - [x] 0.4.0 publicada na Workshop (pelo launcher) e no GitHub (`DW2UIThemes-v0.4.0`, com `workshopId` no manifesto). (2026-11-25)
 
+### 0.5.0 (em andamento, 2026-11-25)
+
+- [x] Linha embaixo do título dos painéis de seção (`SectionHeaderPanel.TitleLineColor`, o jogo usa `ForeColorDark`) e moldura das tabelas em caixa (`TableFrameColor`, cinza fixo do jogo, troca global). Conferido no jogo com o Basalt (recursos e janela de relações). (2026-11-25)
+- [x] Chave geral `Borders`: preenche as 9 chaves de borda que o tema não define, com alfa como opacidade. Editor com "auto (= Borders)". Basalt, Obsidian, Graphite e Synthwave passaram a usá-la. Ideia do usuário. (2026-11-25)
+- [ ] Conferir o Graphite (linha e moldura em `#8C97A6` opaco podem ficar fortes).
+- [x] Versão 0.5.0 e release no GitHub (`DW2UIThemes-v0.5.0`). (2026-11-25)
+- [ ] Publicar a 0.5.0 na Workshop pelo launcher.
+
 ## Perguntas em aberto
 
 - Como o launcher encontra a classe `Entry`? (Funciona, mas não sabemos a regra.)
