@@ -67,7 +67,8 @@ Atualizado em 2026-11-25.
 - [x] Degradê lateral da janela do objeto selecionado: textura pintada de branco fixo, agora com o `OverlayTintColor` do tema. Era a última limitação aceita da janela. (2026-11-25)
 - [x] Postfix do `SetColorScheme` com `Priority.Last` (conflito com o Settings Keeper).
 - [x] Conferido no jogo: divisórias, contorno e troca de temas pelo atalho com o Settings Keeper sem perder cores. (2026-11-25)
-- [ ] Editor no GitHub Pages, formulário de issue para temas e botão "Share on GitHub" no editor (proposto 2026-11-25).
+- [x] Editor no GitHub Pages (https://xupisco.github.io/dw2-uithemes/, de `docs\` na `master`), formulário de issue "New theme" (rótulo `theme`, pede aceite da licença MIT) e botão "Share on GitHub" no editor. (2026-11-25)
+- [ ] A descrição da Workshop com o link do editor online sobe na próxima publicação.
 - [ ] Subir a versão (0.4.0), release e Workshop.
 
 ## Perguntas em aberto
